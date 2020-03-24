@@ -34,18 +34,18 @@ function handleEvent(event) {
 
 function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
-    restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=hospital&key=${process.env.key}`, (data, response) => {
       if (data) {
         const pinData = data.map(row => ({
-          "thumbnailImageUrl": row.aqi.icon,
+          "thumbnailImageUrl": row.name.icon,
           "imageBackgroundColor": "#FFFFFF",
-          "title": `PM 2.5: ${row.aqi.aqi}`,
-          "text": `${row.nameTH}, ${row.areaTH}`,
+          "title": `Branch: ${row.name.name}`,
+          "text": `${row.name}, ${row.name}`,
           "actions": [
             {
               "type": "uri",
               "label": "ข้อมูลย้อนหลัง",
-              "uri": row.historyUrl
+              "uri": "https://www.uob.co.th/default/index.page"
             }
           ]
         }))
@@ -69,6 +69,41 @@ function handleLocationEvent(event) {
   })
  
 }
+//     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+//       if (data) {
+//         const pinData = data.map(row => ({
+//           "thumbnailImageUrl": row.aqi.icon,
+//           "imageBackgroundColor": "#FFFFFF",
+//           "title": `PM 2.5: ${row.aqi.aqi}`,
+//           "text": `${row.nameTH}, ${row.areaTH}`,
+//           "actions": [
+//             {
+//               "type": "uri",
+//               "label": "ข้อมูลย้อนหลัง",
+//               "uri": row.historyUrl
+//             }
+//           ]
+//         }))
+    
+//         var msg = {
+//           "type": "template",
+//           "altText": "ข้อมูลสถานที่",
+//           "template": {
+//             "type": "carousel",
+//             "columns": pinData,
+//             "imageAspectRatio": "rectangle",
+//             "imageSize": "cover"
+//           }
+//         }
+
+//         resolve(client.replyMessage(event.replyToken, msg))
+//       } else {
+//         reject()
+//       }
+//     })
+//   })
+ 
+// }
 
 app.set('port', (process.env.PORT || 4000))
 
