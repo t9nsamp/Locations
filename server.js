@@ -34,18 +34,19 @@ function handleEvent(event) {
 
 function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
-    restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+   // restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+      restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=hospital&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
       if (data) {
         const pinData = data.map(row => ({
-          "thumbnailImageUrl": row.aqi.icon,
+          "thumbnailImageUrl": row.name.icon,
           "imageBackgroundColor": "#FFFFFF",
-          "title": `PM 2.5: ${row.aqi.aqi}`,
-          "text": `${row.nameTH}, ${row.areaTH}`,
+          "title": `สาขา: ${row.name.name}`,
+          "text": `${row.rating}, ${row.rating}`,
           "actions": [
             {
               "type": "uri",
               "label": "ข้อมูลย้อนหลัง",
-              "uri": row.historyUrl
+              "uri": "https://www.uob.co.th/default/index.page"
             }
           ]
         }))
