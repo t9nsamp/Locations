@@ -34,7 +34,7 @@ function handleEvent(event) {
 
 function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
-    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=hospital&key=${process.env.key}`, (data, response) => {
+    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&name=UOB@&key=${process.env.key}`, (data, response) => {
       if (data) {
         const pinData = data.map(row => ({
           "thumbnailImageUrl": row.name.icon,
@@ -48,7 +48,7 @@ function handleLocationEvent(event) {
               "uri": "https://www.uob.co.th/default/index.page"
             }
           ]
-        }))
+        }))   
     
         var msg = {
           "type": "template",
