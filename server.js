@@ -70,7 +70,7 @@ function handleLocationEvent(event) {
           "thumbnailImageUrl": row.aqi.icon,
           "imageBackgroundColor": "#FFFFFF",
           "title": `PM 2.5: ${row.aqi.aqi}`,
-          "text": `${row.nameTH}, ${row.areaTH}`,
+          "text": `${row.aqi.param}, ${row.aqi.param}`,
           "actions": [
             {
               "type": "uri",
