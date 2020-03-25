@@ -45,7 +45,7 @@ function handleLocationEvent(event) {
             {
               "type": "uri",
               "label": "ข้อมูลย้อนหลัง",
-              "uri": row.historyUrl
+              "uri": "https://www.uob.co.th/default/index.page"
             }
           ]
         }))
