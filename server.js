@@ -34,54 +34,18 @@ function handleEvent(event) {
 
 function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
-    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
-      if (data) {
-        const pinData = data.map(row => ({
-          "thumbnailImageUrl": results.icon,
-          "imageBackgroundColor": "#FFFFFF",
-          "title": `PM 2.5: ${results.name}`,
-          "text": `${results.name}, ${results.id}`,
-          "actions": [
-            {
-              "type": "uri",
-              "label": "ข้อมูลย้อนหลัง",
-              "uri": "https://www.uob.co.th/default/index.page"
-            }
-          ]
-        }))
-    
-        var msg = {
-          "type": "template",
-          "altText": "ข้อมูลสถานที่",
-          "template": {
-            "type": "carousel",
-            "columns": pinData,
-            "imageAspectRatio": "rectangle",
-            "imageSize": "cover"
-          }
-        }
-
-        resolve(client.replyMessage(event.replyToken, msg))
-      } else {
-        reject()
-      }
-    })
-  })
- 
-}
-
-//     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+//     restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
 //       if (data) {
 //         const pinData = data.map(row => ({
-//           "thumbnailImageUrl": row.aqi.icon,
+//           "thumbnailImageUrl": row.results.icon,
 //           "imageBackgroundColor": "#FFFFFF",
-//           "title": `PM 2.5: ${row.aqi.aqi}`,
-//           "text": `${row.aqi.param}, ${row.aqi.param}PM 2.5`,
+//           "title": `PM 2.5: ${row.results.name}`,
+//           "text": `${row.results.name}, ${row.results.id}`,
 //           "actions": [
 //             {
 //               "type": "uri",
 //               "label": "ข้อมูลย้อนหลัง",
-//               "uri": row.historyUrl
+//               "uri": "https://www.uob.co.th/default/index.page"
 //             }
 //           ]
 //         }))
@@ -105,6 +69,42 @@ function handleLocationEvent(event) {
 //   })
  
 // }
+
+    restClient.get(`${process.env.apiUrl}?lat=${event.message.lat}&long=${event.message.lng}`, (data, response) => {
+      if (data) {
+        const pinData = data.map(row => ({
+          "thumbnailImageUrl": row.aqi.icon,
+          "imageBackgroundColor": "#FFFFFF",
+          "title": `PM 2.5: ${row.aqi.aqi}`,
+          "text": `${row.aqi.param}, ${row.aqi.param}`,
+          "actions": [
+            {
+              "type": "uri",
+              "label": "ข้อมูลย้อนหลัง",
+              "uri": row.historyUrl
+            }
+          ]
+        }))
+    
+        var msg = {
+          "type": "template",
+          "altText": "ข้อมูลสถานที่",
+          "template": {
+            "type": "carousel",
+            "columns": pinData,
+            "imageAspectRatio": "rectangle",
+            "imageSize": "cover"
+          }
+        }
+
+        resolve(client.replyMessage(event.replyToken, msg))
+      } else {
+        reject()
+      }
+    })
+  })
+ 
+}
 //     restClient.get(`${process.env.apiUrl}?location=${event.message.lat},${event.message.lng}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU0`, (data, response) => {
 //       if (data) {
 //         const pinData = data.map(row => ({
