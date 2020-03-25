@@ -37,10 +37,10 @@ function handleLocationEvent(event) {
     restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
       if (data) {
         const pinData = data.map(row => ({
-          "thumbnailImageUrl": row.next_page_token,
+          "thumbnailImageUrl": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
           "imageBackgroundColor": "#FFFFFF",
-          "title": `PM 2.5: ${row.next_page_token}`,
-          "text": `${row.next_page_token}, ${row.next_page_token}`,
+          "title": `PM 2.5: ${row.geometry.location.lat}`,
+          "text": `${row.geometry.location.lat}, ${row.geometry.location.lat}`,
           "actions": [
             {
               "type": "uri",
