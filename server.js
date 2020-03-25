@@ -36,7 +36,7 @@ function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
       if (data) {
-        const pinData = data.map();
+        var pinData = data.map();
         //   "thumbnailImageUrl": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
         //   "imageBackgroundColor": "#FFFFFF",
         //   "title": `PM 2.5: ${row.results}`,
