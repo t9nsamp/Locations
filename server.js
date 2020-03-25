@@ -34,13 +34,13 @@ function handleEvent(event) {
 
 function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
-    restClient.get(`${process.env.apiUrl}?location=${event.message.lat},${event.message.lng}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
+    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
       if (data) {
         const pinData = data.map(row => ({
-          "thumbnailImageUrl": row.results.icon,
+          "thumbnailImageUrl": row.next_page_token,
           "imageBackgroundColor": "#FFFFFF",
-          "title": `PM 2.5: ${row.results.name}`,
-          "text": `${row.results.name}, ${row.results.id}`,
+          "title": `PM 2.5: ${row.next_page_token}`,
+          "text": `${row.next_page_token}, ${row.next_page_token}`,
           "actions": [
             {
               "type": "uri",
