@@ -37,10 +37,10 @@ function handleLocationEvent(event) {
     restClient.get(`${process.env.apiUrl}?location=${event.message.lat},${event.message.lng}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU0`, (data, response) => {
       if (data) {
         const pinData = data.map(row => ({
-          "thumbnailImageUrl": row.result.icon,
+          "thumbnailImageUrl": row.result[icon],
           "imageBackgroundColor": "#FFFFFF",
-          "title": `Branch: ${row.result.name}`,
-          "text": `${row.result.name}, ${row.result.id}`,
+          "title": `Branch: ${row.result[name]}`,
+          "text": `${row.result[name]}, ${row.result[id]}`,
           "actions": [
             {
               "type": "uri",
