@@ -34,7 +34,7 @@ function handleEvent(event) {
 
 function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
-    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
+    restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
       if (data) {
         // const pinData = data.map(row => ({
         //   "thumbnailImageUrl": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
