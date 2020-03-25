@@ -39,8 +39,8 @@ function handleLocationEvent(event) {
         const pinData = data.map(row => ({
           "thumbnailImageUrl": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
           "imageBackgroundColor": "#FFFFFF",
-          "title": `PM 2.5: ${row.geometry.location.lat}`,
-          "text": `${row.geometry.location.lat}, ${row.geometry.location.lat}`,
+          "title": `PM 2.5: ${row.results}`,
+          "text": `${row.results}, ${row.results}`,
           "actions": [
             {
               "type": "uri",
