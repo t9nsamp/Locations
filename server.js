@@ -36,29 +36,26 @@ function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
     restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
       if (data) {
-        const pinData = data.map(row => ({
-          "thumbnailImageUrl": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
-          "imageBackgroundColor": "#FFFFFF",
-          "title": `PM 2.5: ${row.results}`,
-          "text": `${row.results}, ${row.results}`,
-          "actions": [
-            {
-              "type": "uri",
-              "label": "ข้อมูลย้อนหลัง",
-              "uri": "https://www.uob.co.th/default/index.page"
-            }
-          ]
-        }))
+        // const pinData = data.map(row => ({
+        //   "thumbnailImageUrl": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
+        //   "imageBackgroundColor": "#FFFFFF",
+        //   "title": `PM 2.5: ${row.results}`,
+        //   "text": `${row.results}, ${row.results}`,
+        //   "actions": [
+        //     {
+        //       "type": "uri",
+        //       "label": "ข้อมูลย้อนหลัง",
+        //       "uri": "https://www.uob.co.th/default/index.page"
+        //     }
+        //   ]
+        // }))
     
         var msg = {
-          "type": "template",
-          "altText": "ข้อมูลสถานที่",
+
           "template": {
-            "type": "carousel",
-            "columns": pinData,
-            "imageAspectRatio": "rectangle",
-            "imageSize": "cover"
-          }
+            "type": "text",
+            "text": data
+              }
         }
 
         resolve(client.replyMessage(event.replyToken, msg))
