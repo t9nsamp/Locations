@@ -34,7 +34,7 @@ function handleEvent(event) {
 
 function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
-    restClient.get(`${process.env.apiUrl}?location=${event.message.lat},${event.message.lng}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU0`, (data, response) => {
+    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU0`, (data, response) => {
       if (data) {
         const pinData = data.map(row => ({
           "thumbnailImageUrl": row.name.icon,
