@@ -36,7 +36,7 @@ function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
       if (data) {
-        // const pinData = data.map(row => ({
+        const pinData = data.map//(row => ({
           // "thumbnailImageUrl": row.result[icon],
           // "imageBackgroundColor": "#FFFFFF",
           // "title": `Branch: 
@@ -53,7 +53,7 @@ function handleLocationEvent(event) {
     
         var msg = {
           "type": "text",
-          "text": data
+          "text": pinData
         }
 
         resolve(client.replyMessage(event.replyToken, msg))
