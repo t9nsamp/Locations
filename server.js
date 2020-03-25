@@ -36,11 +36,11 @@ function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
     restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
       if (data) {
-        const pinData = data.map(results => ({
-          "thumbnailImageUrl": results.row.icon,
+        const pinData = data.map(row => ({
+          "thumbnailImageUrl": results.icon,
           "imageBackgroundColor": "#FFFFFF",
-          "title": `PM 2.5: ${results.row.name}`,
-          "text": `${results.row.name}, ${results.row.id}`,
+          "title": `PM 2.5: ${results.name}`,
+          "text": `${results.name}, ${results.id}`,
           "actions": [
             {
               "type": "uri",
