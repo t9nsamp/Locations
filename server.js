@@ -58,7 +58,7 @@ function handleLocationEvent(event) {
               }
         }
 
-      //   resolve(client.replyMessage(event.replyToken, msg))
+        resolve(client.replyMessage(event.replyToken, msg))
       // } else {
       //   reject()
       // }
