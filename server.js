@@ -69,7 +69,7 @@ function handleLocationEvent(event) {
             }
           }*/
 
-          var msg = pinData[1];
+          var msg = pinData;
 
         
           resolve(client.replyMessage(event.replyToken, msg))
