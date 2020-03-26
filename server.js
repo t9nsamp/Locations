@@ -51,10 +51,11 @@ function handleLocationEvent(event) {
           }))
 
 
-          var msg = pinData[0,1,2]
+          var msg = pinData[0]
+          var msg1 = pinData[1]
 
         
-          resolve(client.replyMessage(event.replyToken, msg))
+          resolve(client.replyMessage(event.replyToken, msg,msg1))
         } else {
           reject()
         }
