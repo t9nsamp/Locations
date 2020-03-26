@@ -45,6 +45,7 @@ function handleLocationEvent(event) {
         if (data) {
             //const pinData = data.results
           const pinData = data.results.map(row => ({
+            
             "type": "flex",
             "altText": "Flex Message",
             "contents": {
@@ -182,6 +183,7 @@ function handleLocationEvent(event) {
             // "text": `${row.name}`
           }))
 
+          var msg = [];
 
           msg.push(pinData[0],pinData[1],pinData[2])
        
