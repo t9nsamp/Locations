@@ -39,35 +39,13 @@ function handleLocationEvent(event) {
 
     //apiUrl : https://maps.googleapis.com/maps/api/place/nearbysearch/json
 
-    restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
-        if (data) {
-          const pinData = data.map(row => ({
-            "type": "text",
-            "text": `${row.nameTH}`
-           /* "thumbnailImageUrl": row.aqi.icon,
-            "imageBackgroundColor": "#FFFFFF",
-            "title": `PM 2.5: ${row.aqi.aqi}`,
-            "text": `${row.nameTH}, ${row.areaTH}`,
-            "actions": [
-              {
-                "type": "uri",
-                "label": "ข้อมูลย้อนหลัง",
-                "uri": row.historyUrl
-              }
-            ]*/
-          }))
+    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},long=${event.message.longitude}&rankby=distance&keyword=hospital&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
 
-        /*
-          var msg = {
-            "type": "template",
-            "altText": "ข้อมูลสถานที่",
-            "template": {
-              "type": "carousel",
-              "columns": pinData,
-              "imageAspectRatio": "rectangle",
-              "imageSize": "cover"
-            }
-          }*/
+    //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+        if (data) {
+          const pinData = data.result.map(row => ({
+            "type": "text",
+            "text": `${row.name}`
 
           var msg = pinData;
 
