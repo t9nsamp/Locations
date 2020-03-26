@@ -49,6 +49,8 @@ function handleLocationEvent(event) {
             "type": "flex",
             "altText": "Flex Message",
             "contents": {
+              "type": "carousel",
+            "contents": {
               "type": "bubble",
               "hero": {
                 "type": "image",
@@ -181,7 +183,7 @@ function handleLocationEvent(event) {
           
             // "type": "text",
             // "text": `${row.name}`
-          }))
+          }}))
 
           var msg = [];
 
