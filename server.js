@@ -45,9 +45,6 @@ function handleLocationEvent(event) {
         if (data) {
             //const pinData = data.results
           const pinData = data.results.map(row => ({
-              "type": "flex",
-              "altText": "Flex Message",
-              "contents": {
                 "type": "bubble",
                 "header": {
                   "type": "box",
@@ -120,7 +117,7 @@ function handleLocationEvent(event) {
                   ]
                 }
               }
-            }
+            
             
              //end fulfillment
              //end result
