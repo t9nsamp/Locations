@@ -51,7 +51,7 @@ function handleLocationEvent(event) {
           }))
 
 
-          var msg = pinData[0]
+          var msg = pinData[0,1,2]
 
         
           resolve(client.replyMessage(event.replyToken, msg))
