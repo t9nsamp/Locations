@@ -104,7 +104,7 @@ function handleLocationEvent(event) {
                       {
                         "type": "text",
                         "text": "4.0",
-                        "flex": 0,
+                        
                         "margin": "md",
                         "size": "sm",
                         "color": "#999999"
@@ -125,14 +125,14 @@ function handleLocationEvent(event) {
                           {
                             "type": "text",
                             "text": "Place",
-                            "flex": 1,
+                           
                             "size": "sm",
                             "color": "#AAAAAA"
                           },
                           {
                             "type": "text",
                             "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
-                            "flex": 5,
+                            
                             "size": "sm",
                             "color": "#666666",
                             "wrap": true
@@ -147,14 +147,14 @@ function handleLocationEvent(event) {
                           {
                             "type": "text",
                             "text": "Time",
-                            "flex": 1,
+                            
                             "size": "sm",
                             "color": "#AAAAAA"
                           },
                           {
                             "type": "text",
                             "text": "10:00 - 23:00",
-                            "flex": 5,
+                            
                             "size": "sm",
                             "color": "#666666",
                             "wrap": true
@@ -168,7 +168,7 @@ function handleLocationEvent(event) {
               "footer": {
                 "type": "box",
                 "layout": "vertical",
-                "flex": 0,
+                
                 "spacing": "sm",
                 "contents": [
                   {
