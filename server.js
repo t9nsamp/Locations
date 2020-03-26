@@ -43,86 +43,41 @@ function handleLocationEvent(event) {
 
     //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         if (data) {
+          // var Carousel = []; // ประกาศ Array สำหรับกล่อง
+          // var Str_items = '[]'; // Create String
+          // var Json_item = JSON.parse(Str_items); // Convert String to JSON
+          // var x = 0;
+          // var y = 0;
             //const pinData = data.results
           const pinData = data.results.map(row => ({
-              "type": "flex",
-              "altText": "Flex Message",
-              "contents": {
-                "type": "carousel",
-                "contents": [
-                  {
-                    "type": "bubble",
-                    "hero": {
-                      "type": "image",
-                      "url": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
-                      "size": "full",
-                      "aspectRatio": "20:13",
-                      "aspectMode": "cover"
-                    },
-                    "body": {
-                      "type": "box",
-                      "layout": "vertical",
-                      "spacing": "sm",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": `${row.name}`, 
-                          "size": "xl",
-                          "weight": "bold",
-                          "wrap": true
-                        },
-                        {
-                          "type": "box",
-                          "layout": "baseline",
-                          "contents": [
-                            {
-                              "type": "text",
-                              "text": `${row.vicinity}`, 
-                            
-                              "size": "xl",
-                              "weight": "bold",
-                              "wrap": true
-                            },
-                            {
-                              "type": "text",
-                              "text": ".99",
-                              
-                              "size": "sm",
-                              "weight": "bold",
-                              "wrap": true
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    "footer": {
-                      "type": "box",
-                      "layout": "vertical",
-                      "spacing": "sm",
-                      "contents": [
-                        {
-                          "type": "button",
-                          "action": {
-                            "type": "uri",
-                            "label": "นำทาง",
-                            "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
-                          },
-                          "style": "primary"
-                        },
-                        {
-                          "type": "button",
-                          "action": {
-                            "type": "uri",
-                            "label": "Add to whishlist",
-                            "uri": "https://linecorp.com"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
+            "thumbnailImageUrl": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
+            "imageBackgroundColor": "#FFFFFF",
+            "title": `${row.name}`,
+            "text": `${row.vicinity}`,
+            "actions": [
+              {
+                "type": "uri",
+                "label": "ข้อมูลย้อนหลัง",
+                "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
               }
-            
+            ]
+          }))
+      
+          var msg = {
+            "type": "template",
+            "altText": "ข้อมูลสถานที่",
+            "template": {
+              "type": "carousel",
+              "columns": pinData,
+              "imageAspectRatio": "rectangle",
+              "imageSize": "cover"
+            }
+          }
+        // }))
+
+        // var msg = [];
+
+        // msg.push(pinData[0],pinData[1],pinData[2])
             
           //   "type": "flex",
           //   "altText": "Flex Message",
@@ -259,11 +214,6 @@ function handleLocationEvent(event) {
           
           //   // "type": "text",
           //   // "text": `${row.name}`
-   }))
-
-          var msg = [];
-
-          msg.push(pinData[0],pinData[1],pinData[2])
        
           resolve(client.replyMessage(event.replyToken, msg))
         } else {
