@@ -45,142 +45,154 @@ function handleLocationEvent(event) {
         if (data) {
             //const pinData = data.results
           const pinData = data.results.map(row => ({
-            "type": "flex",
-            "altText": "Flex Message",
-            "contents": {
-              "type": "bubble",
-              "hero": {
-                "type": "image",
-                "url": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
-                "size": "full",
-                "aspectRatio": "20:13",
-                "aspectMode": "cover",
-                "action": {
-                  "type": "uri",
-                  "label": "Line",
-                  "uri": "https://linecorp.com/"
-                }
-              },
-              "body": {
-                "type": "box",
-                "layout": "vertical",
-                "contents": [
-                  {
-                    "type": "text",
-                    "text": `${row.name}`,
-                    "size": "xl",
-                    "weight": "bold"
-                  },
-                  {
-                    "type": "box",
-                    "layout": "baseline",
-                    "margin": "md",
-                    "contents": [
-                      {
-                        "type": "icon",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
-                        "size": "sm"
-                      },
-                      {
-                        "type": "icon",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
-                        "size": "sm"
-                      },
-                      {
-                        "type": "icon",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
-                        "size": "sm"
-                      },
-                      {
-                        "type": "icon",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
-                        "size": "sm"
-                      },
-                      {
-                        "type": "icon",
-                        "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png",
-                        "size": "sm"
-                      },
-                      {
-                        "type": "text",
-                        "text": "4.0",
-                        
-                        "margin": "md",
-                        "size": "sm",
-                        "color": "#999999"
-                      }
-                    ]
-                  },
-                  {
-                    "type": "box",
-                    "layout": "vertical",
-                    "spacing": "sm",
-                    "margin": "lg",
-                    "contents": [
-
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "Time",
-                            
-                            "size": "sm",
-                            "color": "#AAAAAA"
-                          },
-                          {
-                            "type": "text",
-                            "text": "10:00 - 23:00",
-                            
-                            "size": "sm",
-                            "color": "#666666",
-                            "wrap": true
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              "footer": {
-                "type": "box",
-                "layout": "vertical",
-                
-                "spacing": "sm",
-                "contents": [
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "นำทาง",
-                      "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
-                    },
-                    "height": "sm",
-                    "style": "link"
-                  },
-                  {
-                    "type": "button",
-                    "action": {
-                      "type": "uri",
-                      "label": "WEBSITE",
-                      "uri": "https://linecorp.com"
-                    },
-                    "height": "sm",
-                    "style": "link"
-                  },
-                  {
-                    "type": "spacer",
-                    "size": "sm"
-                  }
-                ]
-              }
+            "thumbnailImageUrl": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
+          "imageBackgroundColor": "#FFFFFF",
+          "title": `${row.name}`,
+          "text": `${row.vicinity}`,
+          "actions": [
+            {
+              "type": "uri",
+              "label": "นำทาง",
+              "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
             }
+          ]
+        }))
+          //   "type": "flex",
+          //   "altText": "Flex Message",
+          //   "contents": {
+          //     "type": "bubble",
+          //     "hero": {
+          //       "type": "image",
+          //       "url": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
+          //       "size": "full",
+          //       "aspectRatio": "20:13",
+          //       "aspectMode": "cover",
+          //       "action": {
+          //         "type": "uri",
+          //         "label": "Line",
+          //         "uri": "https://linecorp.com/"
+          //       }
+          //     },
+          //     "body": {
+          //       "type": "box",
+          //       "layout": "vertical",
+          //       "contents": [
+          //         {
+          //           "type": "text",
+          //           "text": `${row.name}`,
+          //           "size": "xl",
+          //           "weight": "bold"
+          //         },
+          //         {
+          //           "type": "box",
+          //           "layout": "baseline",
+          //           "margin": "md",
+          //           "contents": [
+          //             {
+          //               "type": "icon",
+          //               "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+          //               "size": "sm"
+          //             },
+          //             {
+          //               "type": "icon",
+          //               "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+          //               "size": "sm"
+          //             },
+          //             {
+          //               "type": "icon",
+          //               "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+          //               "size": "sm"
+          //             },
+          //             {
+          //               "type": "icon",
+          //               "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gold_star_28.png",
+          //               "size": "sm"
+          //             },
+          //             {
+          //               "type": "icon",
+          //               "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/review_gray_star_28.png",
+          //               "size": "sm"
+          //             },
+          //             {
+          //               "type": "text",
+          //               "text": "4.0",
+                        
+          //               "margin": "md",
+          //               "size": "sm",
+          //               "color": "#999999"
+          //             }
+          //           ]
+          //         },
+          //         {
+          //           "type": "box",
+          //           "layout": "vertical",
+          //           "spacing": "sm",
+          //           "margin": "lg",
+          //           "contents": [
+
+          //             {
+          //               "type": "box",
+          //               "layout": "baseline",
+          //               "spacing": "sm",
+          //               "contents": [
+          //                 {
+          //                   "type": "text",
+          //                   "text": "Time",
+                            
+          //                   "size": "sm",
+          //                   "color": "#AAAAAA"
+          //                 },
+          //                 {
+          //                   "type": "text",
+          //                   "text": "10:00 - 23:00",
+                            
+          //                   "size": "sm",
+          //                   "color": "#666666",
+          //                   "wrap": true
+          //                 }
+          //               ]
+          //             }
+          //           ]
+          //         }
+          //       ]
+          //     },
+          //     "footer": {
+          //       "type": "box",
+          //       "layout": "vertical",
+                
+          //       "spacing": "sm",
+          //       "contents": [
+          //         {
+          //           "type": "button",
+          //           "action": {
+          //             "type": "uri",
+          //             "label": "นำทาง",
+          //             "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+          //           },
+          //           "height": "sm",
+          //           "style": "link"
+          //         },
+          //         {
+          //           "type": "button",
+          //           "action": {
+          //             "type": "uri",
+          //             "label": "WEBSITE",
+          //             "uri": "https://linecorp.com"
+          //           },
+          //           "height": "sm",
+          //           "style": "link"
+          //         },
+          //         {
+          //           "type": "spacer",
+          //           "size": "sm"
+          //         }
+          //       ]
+          //     }
+          //   }
           
-            // "type": "text",
-            // "text": `${row.name}`
-          }))
+          //   // "type": "text",
+          //   // "text": `${row.name}`
+          // }))
 
           var msg = [];
 
