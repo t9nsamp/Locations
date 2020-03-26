@@ -13,9 +13,9 @@ const config = {
 
 const client = new line.Client(config);
 
-app.get('/', function (req, res) {
+/*app.get('/', function (req, res) {
 	res.send('03-pm2.5-bot')
-})
+})*/
 
 app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
@@ -34,33 +34,27 @@ function handleEvent(event) {
 
 function handleLocationEvent(event) {
   return new Promise((resolve, reject) => {
+
+    //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=13.8575872,100.5617152&rankby=distance&keyword=hospital&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU
+
+    //apiUrl : https://maps.googleapis.com/maps/api/place/nearbysearch/json
+
     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
-      // if (data) {
+      if (data) {
         var pinData = data;
-        //   "thumbnailImageUrl": "https://maps.gstatic.com/mapfiles/place_api/icons/bank_dollar-71.png",
-        //   "imageBackgroundColor": "#FFFFFF",
-        //   "title": `PM 2.5: ${row.results}`,
-        //   "text": `${row.results}, ${row.results}`,
-        //   "actions": [
-        //     {
-        //       "type": "uri",
-        //       "label": "ข้อมูลย้อนหลัง",
-        //       "uri": "https://www.uob.co.th/default/index.page"
-        //     }
-        //   ]
-        // }))
+
     
         var msg = {
 
-          
             "type": "text",
             "text": pinData
-              }
+
+            }
 
         resolve(client.replyMessage(event.replyToken, msg))
-      // } else {
-      //   reject()
-      // }
+      } else {
+        reject()
+      }
     })
   })
  
