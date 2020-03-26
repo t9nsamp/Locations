@@ -45,15 +45,15 @@
           if (data) {
             //const pinData = data.results.map(row => ({
               const pinData = data.map(row => ({
-                "thumbnailImageUrl": row.aqi.icon,
+                "thumbnailImageUrl": `${row.aqi.aqi}`,
                 "imageBackgroundColor": "#FFFFFF",
-                "title": `PM 2.5: ${row.aqi.aqi}`,
-                "text": `${row.nameTH}, ${row.areaTH}`,
+                "title": `${row.aqi.aqi}`,
+                "text": `${row.aqi.aqi}`,
                 "actions": [
                   {
                     "type": "uri",
                     "label": "ข้อมูลย้อนหลัง",
-                    "uri": row.historyUrl
+                    "uri": "https://www.uob.co.th/default/index.page"
                   }
                 ]
               }))
@@ -63,7 +63,7 @@
                 "altText": "ข้อมูลสถานที่",
                 "template": {
                   "type": "carousel",
-                  "columns": pinData[0],
+                  "columns": pinData,
                   "imageAspectRatio": "rectangle",
                   "imageSize": "cover"
                 }
