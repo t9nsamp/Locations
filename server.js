@@ -47,8 +47,8 @@
               const pinData = data.map(row => ({
                 "thumbnailImageUrl": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
                 "imageBackgroundColor": "#FFFFFF",
-                "title": `${row.aqi[1].aqi}`,
-                "text": `${row.aqi[1].aqi}`,
+                "title": `${row.aqi.aqi}`,
+                "text": `${row.aqi.aqi}`,
                 "actions": [
                   {
                     "type": "uri",
@@ -63,7 +63,7 @@
                 "altText": "ข้อมูลสถานที่",
                 "template": {
                   "type": "carousel",
-                  "columns": pinData,
+                  "columns": (pinData[0],pinData[1],pinData[2]),
                   "imageAspectRatio": "rectangle",
                   "imageSize": "cover"
                 }
