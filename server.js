@@ -39,9 +39,9 @@ function handleLocationEvent(event) {
 
     //apiUrl : https://maps.googleapis.com/maps/api/place/nearbysearch/json
 
-    //restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=UOB&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
+    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=UOB&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
 
-    restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+    //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         if (data) {
           // var Carousel = []; // ประกาศ Array สำหรับกล่อง
           // var Str_items = '[]'; // Create String
@@ -49,30 +49,30 @@ function handleLocationEvent(event) {
           // var x = 0;
           // var y = 0;
             //const pinData = data.results
-            const pinData = data.map(row => ({
-              "thumbnailImageUrl": row.aqi.icon,
-              "imageBackgroundColor": "#FFFFFF",
-              "title": `PM 2.5: ${row.aqi.aqi}`,
-              "text": `${row.nameTH}, ${row.areaTH}`,
-              "actions": [
-                {
-                  "type": "uri",
-                  "label": "ข้อมูลย้อนหลัง",
-                  "uri": row.historyUrl
-                }
-              ]
-            }))
-      
-            var msg = {
-              "type": "template",
-              "altText": "ข้อมูลสถานที่",
-              "template": {
-                "type": "carousel",
-                "columns": pinData,
-                "imageAspectRatio": "rectangle",
-                "imageSize": "cover"
+          const pinData = data.results.map(row => ({
+            "thumbnailImageUrl": row.icon,
+            "imageBackgroundColor": "#FFFFFF",
+            "title": `Bank : ${row.name}`,
+            "text": `${row.vicinity}`,
+            "actions": [
+              {
+                "type": "uri",
+                "label": "ข้อมูลย้อนหลัง",
+                "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
               }
+            ]
+          }))
+      
+          var msg = {
+            "type": "template",
+            "altText": "ข้อมูลสถานที่",
+            "template": {
+              "type": "carousel",
+              "columns": pinData,
+              "imageAspectRatio": "rectangle",
+              "imageSize": "cover"
             }
+          }
   
           resolve(client.replyMessage(event.replyToken, msg))
         } else {
