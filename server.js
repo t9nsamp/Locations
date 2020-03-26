@@ -63,7 +63,7 @@
                 "altText": "ข้อมูลสถานที่",
                 "template": {
                   "type": "carousel",
-                  "columns": pinData,
+                  "columns": pinData[0],
                   "imageAspectRatio": "rectangle",
                   "imageSize": "cover"
                 }
