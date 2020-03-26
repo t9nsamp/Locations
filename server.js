@@ -194,9 +194,9 @@ function handleLocationEvent(event) {
           //   // "text": `${row.name}`
           // }))
 
-          var msg = [];
 
-          msg.push(pinData[0],pinData[1],pinData[2])
+
+          msg.push(pinData[0],[1],[2])
        
           resolve(client.replyMessage(event.replyToken, msg))
         } else {
