@@ -39,20 +39,21 @@ function handleLocationEvent(event) {
 
     //apiUrl : https://maps.googleapis.com/maps/api/place/nearbysearch/json
 
-    restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=UOB&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
+    //restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=UOB&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
 
-    //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+    restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         if (data) {
-          const pinData = data.results.map(row => ({
+          //const pinData = data.results.map(row => ({
+            const pinData = data.map(row => ({
               "thumbnailImageUrl": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
               "imageBackgroundColor": "#FFFFFF",
-              "title": `${row.name}`,
-              "text": `${row.vicinity}`,
+              "title": `PM 2.5: ${row.aqi.aqi}`,
+              "text": "ข้อมูลย้อนหลัง",
               "actions": [
                 {
                   "type": "uri",
                   "label": "ข้อมูลย้อนหลัง",
-                  "uri": "https://www.uob.co.th/default/index.page"
+                  "uri": row.historyUrl
                 }
               ]
             }))
