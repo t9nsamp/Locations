@@ -39,40 +39,24 @@ function handleLocationEvent(event) {
 
     //apiUrl : https://maps.googleapis.com/maps/api/place/nearbysearch/json
 
-    /*restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
-      if (data) {
-        var pinData = data;
-
-    
-        var msg = {
-
-            "type": "text",
-            "text": "test"
-
-            }
-
-        resolve(client.replyMessage(event.replyToken, msg))
-      } else {
-        reject()
-      }
-    })*/
-
     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         if (data) {
-         /* const pinData = data.map(row => ({
-            "thumbnailImageUrl": row.aqi.icon,
+          const pinData = data.map(row => ({
+            "text": `${row.nameTH}, ${row.areaTH}`,
+           /* "thumbnailImageUrl": row.aqi.icon,
             "imageBackgroundColor": "#FFFFFF",
             "title": `PM 2.5: ${row.aqi.aqi}`,
-            "text": `${row.aqi.param}, ${row.aqi.param}`,
+            "text": `${row.nameTH}, ${row.areaTH}`,
             "actions": [
               {
                 "type": "uri",
                 "label": "ข้อมูลย้อนหลัง",
                 "uri": row.historyUrl
               }
-            ]
+            ]*/
           }))
-      
+
+        /*
           var msg = {
             "type": "template",
             "altText": "ข้อมูลสถานที่",
@@ -87,7 +71,7 @@ function handleLocationEvent(event) {
           var msg = {
 
             "type": "text",
-            "text": data
+            pinData
 
             }
   
