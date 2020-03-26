@@ -14,7 +14,7 @@ const config = {
 const client = new line.Client(config);
 
 app.get('/', function (req, res) {
-	res.send('03-pm2.5-bot')
+ res.send('03-pm2.5-bot')
 })
 
 app.post('/webhook', line.middleware(config), (req, res) => {
@@ -56,43 +56,78 @@ function handleLocationEvent(event) {
         reject()
       }
     })*/
-
-    restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
-        if (data) {
-          const pinData = data.map(row => ({
-            "thumbnailImageUrl": row.aqi.icon,
-            "imageBackgroundColor": "#FFFFFF",
-            "title": `PM 2.5: ${row.aqi.aqi}`,
-            "text": `${row.aqi.param}, ${row.aqi.param}`,
-            "actions": [
-              {
-                "type": "uri",
-                "label": "ข้อมูลย้อนหลัง",
-                "uri": row.historyUrl
-              }
-            ]
-          }))
-      
-          var msg = {
-            "type": "template",
-            "altText": "ข้อมูลสถานที่",
-            "template": {
-              "type": "carousel",
-              "columns": pinData,
-              "imageAspectRatio": "rectangle",
-              "imageSize": "cover"
+        restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+      if (data) {
+        const pinData = data.map(row => ({
+          "thumbnailImageUrl": row.aqi.icon,
+          "imageBackgroundColor": "#FFFFFF",
+          "title": `PM 2.5: ${row.aqi.aqi}`,
+          "text": `${row.aqi.param}, ${row.aqi.param}`,
+          "actions": [
+            {
+              "type": "uri",
+              "label": "ข้อมูลย้อนหลัง",
+              "uri": row.historyUrl
             }
+          ]
+        }))
+    
+        var msg = {
+          "type": "template",
+          "altText": "ข้อมูลสถานที่",
+          "template": {
+            "type": "carousel",
+            "columns": pinData,
+            "imageAspectRatio": "rectangle",
+            "imageSize": "cover"
           }
-  
-          resolve(client.replyMessage(event.replyToken, msg))
-        } else {
-          reject()
         }
-      })
 
+        resolve(client.replyMessage(event.replyToken, msg))
+      } else {
+        reject()
+      }
+    })
   })
  
 }
+
+//     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+//         if (data) {
+//           const pinData = data.map(row => ({
+//             "thumbnailImageUrl": row.aqi.icon,
+//             "imageBackgroundColor": "#FFFFFF",
+//             "title": `PM 2.5: ${row.aqi.aqi}`,
+//             "text": `${row.aqi.param}, ${row.aqi.param}`,
+//             "actions": [
+//               {
+//                 "type": "uri",
+//                 "label": "ข้อมูลย้อนหลัง",
+//                 "uri": row.historyUrl
+//               }
+//             ]
+//           }))
+      
+//           var msg = {
+//             "type": "template",
+//             "altText": "ข้อมูลสถานที่",
+//             "template": {
+//               "type": "carousel",
+//               "columns": pinData,
+//               "imageAspectRatio": "rectangle",
+//               "imageSize": "cover"
+//             }
+//           }
+  
+//           resolve(client.replyMessage(event.replyToken, msg))
+//         } else {
+//           reject()
+//         }
+//       })
+
+//   })
+ 
+// }
 
 
 app.set('port', (process.env.PORT || 4000))
