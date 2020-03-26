@@ -45,7 +45,6 @@ function handleLocationEvent(event) {
         if (data) {
             //const pinData = data.results
           const pinData = data.results.map(row => ({
-
             "type": "flex",
             "altText": "Flex Message",
             "contents": {
@@ -184,8 +183,7 @@ function handleLocationEvent(event) {
           }))
 
 
-
-          msg.push(pinData[0],[1],[2])
+          msg.push(pinData[0],pinData[1],pinData[2])
        
           resolve(client.replyMessage(event.replyToken, msg))
         } else {
