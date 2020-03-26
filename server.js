@@ -47,82 +47,243 @@
             "type": "flex",
             "altText": "Flex Message",
             "contents": {
-                "type": "carousel",
-                "contents": [
-                  {
-                    "type": "bubble",
-                    "hero": {
-                      "type": "image",
-                      "url": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
-                      "size": "full",
-                      "aspectRatio": "20:13",
-                      "aspectMode": "cover"
-                    },
-                    "body": {
-                      "type": "box",
-                      "layout": "vertical",
-                      "spacing": "sm",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": `${row[0].name}`,
-                          "size": "xl",
-                          "weight": "bold",
-                          "wrap": true
-                        },
-                        {
-                          "type": "box",
-                          "layout": "baseline",
-                          "contents": [
-                            {
-                              "type": "text",
-                              "text": "$49",
-                              
-                              "size": "xl",
-                              "weight": "bold",
-                              "wrap": true
-                            },
-                            {
-                              "type": "text",
-                              "text": ".99",
+              "type": "carousel",
+              "contents": [
+                {
+                  "type": "bubble",
+                  "hero": {
+                    "type": "image",
+                    "url": `${row[0].icon}`,
+                    "size": "full",
+                    "aspectRatio": "20:13",
+                    "aspectMode": "cover"
+                  },
+                  "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": `PM 2.5 : ${row[0].name}`,
+                        "size": "xl",
+                        "weight": "bold",
+                        "wrap": true
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "จุดตรวจวัด ",
                             
-                              "size": "sm",
-                              "weight": "bold",
-                              "wrap": true
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    "footer": {
-                      "type": "box",
-                      "layout": "vertical",
-                      "spacing": "sm",
-                      "contents": [
-                        {
-                          "type": "button",
-                          "action": {
-                            "type": "uri",
-                            "label": "นำทาง",
-                            "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row[0].geometry.location.lat},${row[0].geometry.location.lng}`
-                          },
-                          "style": "primary"
-                        },
-                        {
-                          "type": "button",
-                          "action": {
-                            "type": "uri",
-                            "label": "Add to whishlist",
-                            "uri": "https://linecorp.com"
+                            "size": "sm",
+                            "weight": "bold",
+                            "wrap": true
                           }
-                        }
-                      ]
-                    }
+                        ]
+                      }
+                    ]
+                  },
+                  "footer": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "text"
+                      }
+                    ]
                   }
-                ]
+                },
+                {
+                  "type": "bubble",
+                  "hero": {
+                    "type": "image",
+                    "url": `${row[1].icon}`,
+                    "size": "full",
+                    "aspectRatio": "20:13",
+                    "aspectMode": "cover"
+                  },
+                  "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": `PM 2.5 : ${row[1].name}`,
+                        "size": "xl",
+                        "weight": "bold",
+                        "wrap": true
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "text",
+                            
+                            "size": "sm",
+                            "weight": "bold",
+                            "wrap": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "footer": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "อัพเดตเมื่อ"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "type": "bubble",
+                  "hero": {
+                    "type": "image",
+                    "url": `${row[2].icon}`,
+                    "size": "full",
+                    "aspectRatio": "20:13",
+                    "aspectMode": "cover"
+                  },
+                  "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": `PM 2.5 : ${row[2].name}`,
+                        "size": "xl",
+                        "weight": "bold",
+                        "wrap": true
+                      },
+                      {
+                        "type": "box",
+                        "layout": "baseline",
+                        "contents": [
+                          {
+                            "type": "text",
+                            "text": "text",
+
+                            "size": "sm",
+                            "weight": "bold",
+                            "wrap": true
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "footer": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                      {
+                        "type": "text",
+                        "text": "อัพเดตเมื่อ"
+                      }
+                    ]
+                  }
+                }
+        
+              ]
             }
-            
           }))
+        
+
+
+
+
+          //   "type": "flex",
+          //   "altText": "Flex Message",
+          //   "contents": {
+          //       "type": "carousel",
+          //       "contents": [
+          //         {
+          //           "type": "bubble",
+          //           "hero": {
+          //             "type": "image",
+          //             "url": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
+          //             "size": "full",
+          //             "aspectRatio": "20:13",
+          //             "aspectMode": "cover"
+          //           },
+          //           "body": {
+          //             "type": "box",
+          //             "layout": "vertical",
+          //             "spacing": "sm",
+          //             "contents": [
+          //               {
+          //                 "type": "text",
+          //                 "text": `${row[0].name}`,
+          //                 "size": "xl",
+          //                 "weight": "bold",
+          //                 "wrap": true
+          //               },
+          //               {
+          //                 "type": "box",
+          //                 "layout": "baseline",
+          //                 "contents": [
+          //                   {
+          //                     "type": "text",
+          //                     "text": "$49",
+                              
+          //                     "size": "xl",
+          //                     "weight": "bold",
+          //                     "wrap": true
+          //                   },
+          //                   {
+          //                     "type": "text",
+          //                     "text": ".99",
+                            
+          //                     "size": "sm",
+          //                     "weight": "bold",
+          //                     "wrap": true
+          //                   }
+          //                 ]
+          //               }
+          //             ]
+          //           },
+          //           "footer": {
+          //             "type": "box",
+          //             "layout": "vertical",
+          //             "spacing": "sm",
+          //             "contents": [
+          //               {
+          //                 "type": "button",
+          //                 "action": {
+          //                   "type": "uri",
+          //                   "label": "นำทาง",
+          //                   "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row[0].geometry.location.lat},${row[0].geometry.location.lng}`
+          //                 },
+          //                 "style": "primary"
+          //               },
+          //               {
+          //                 "type": "button",
+          //                 "action": {
+          //                   "type": "uri",
+          //                   "label": "Add to whishlist",
+          //                   "uri": "https://linecorp.com"
+          //                 }
+          //               }
+          //             ]
+          //           }
+          //         }
+          //       ]
+          //   }
+            
+          // }))
         
     
             resolve(client.replyMessage(event.replyToken, msg))
