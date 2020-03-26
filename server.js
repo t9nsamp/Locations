@@ -87,7 +87,7 @@ function handleLocationEvent(event) {
           var msg = {
 
             "type": "text",
-            "text": "test"
+            "text": data
 
             }
   
