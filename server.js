@@ -65,7 +65,7 @@
                       "contents": [
                         {
                           "type": "text",
-                          "text": `${row.name}`,
+                          "text": `${row[0].name}`,
                           "size": "xl",
                           "weight": "bold",
                           "wrap": true
@@ -104,7 +104,7 @@
                           "action": {
                             "type": "uri",
                             "label": "นำทาง",
-                            "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+                            "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row[0].geometry.location.lat},${row[0].geometry.location.lng}`
                           },
                           "style": "primary"
                         },
@@ -124,16 +124,6 @@
             
           }))
         
-          var msg = {
-            "type": "template",
-            "altText": "ข้อมูลสถานที่",
-            "template": {
-              "type": "carousel",
-              "columns": pinData,
-              "imageAspectRatio": "rectangle",
-              "imageSize": "cover"
-            }
-          }
     
             resolve(client.replyMessage(event.replyToken, msg))
           } else {
