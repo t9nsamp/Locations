@@ -101,7 +101,7 @@ function handleLocationEvent(event) {
               ]
             }
           }))
-          var msg = pinData[0]
+          var msg = pinData();
   
           resolve(client.replyMessage(event.replyToken, msg))
         } else {
@@ -117,3 +117,6 @@ function handleLocationEvent(event) {
   app.listen(app.get('port'), function () {
     console.log('run at port', app.get('port'))
   })
+
+          
+
