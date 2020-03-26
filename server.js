@@ -46,6 +46,9 @@ function handleLocationEvent(event) {
           const pinData = data.result.map(row => ({
             "type": "text",
             "text": `${row.name}`
+        
+          }))
+
 
           var msg = pinData;
 
