@@ -63,9 +63,16 @@ function handleLocationEvent(event) {
               ]
             }))
       
-        var msg = [];
-
-        msg.push(pinData[0],pinData[1],pinData[2])
+            var msg = {
+              "type": "template",
+              "altText": "ข้อมูลสถานที่",
+              "template": {
+                "type": "carousel",
+                "columns": pinData,
+                "imageAspectRatio": "rectangle",
+                "imageSize": "cover"
+              }
+            }
   
           resolve(client.replyMessage(event.replyToken, msg))
         } else {
