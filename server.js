@@ -45,78 +45,10 @@ function handleLocationEvent(event) {
         if (data) {
             //const pinData = data.results
           const pinData = data.results.map(row => ({
-                "type": "bubble",
-                "header": {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "text",
-                      "text": `${row.name}`,
-                      "size": "sm",
-                      "weight": "bold",
-                      "color": "#AAAAAA"
-                    }
-                  ]
-                },
-                "hero": {
-                  "type": "image",
-                 "url": "https://lh3.googleusercontent.com/p/AF1QipP4xdrNQYSC-T4aXbBfvUujlyS98Dbz1109JtBL=w1024-k",
-                  "size": "full",
-                  "aspectRatio": "20:13",
-                  "aspectMode": "cover",
-                  "action": {
-                    "type": "uri",
-                    "label": "Action",
-                    "uri": "https://linecorp.com/"
-                  }
-                },
-                "body": {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "spacing": "md",
-                  "contents": [
-                    {
-                      "type": "box",
-                      "layout": "vertical",
-                      "contents": [
-                        {
-                          "type": "text",
-                          "text": `${row.name}`,
-                          "margin": "md",
-                          "size": "xs",
-                          "gravity": "top"
-                        },
-                        {
-                          "type": "separator"
-                        },
-                        {
-                          "type": "text",
-                          "text": `${row.name}`,
-                          "margin": "md",
-                          "size": "xs",
-                          "gravity": "center"
-                        }
-                     
-                      ]
-                    }
-                  ]
-                },
-                "footer": {
-                  "type": "box",
-                  "layout": "horizontal",
-                  "contents": [
-                    {
-                      "type": "button",
-                      "action": {
-                        "type": "uri",
-                        "label": "นำทาง",
-                        "uri": "https://www.google.com/maps?q="
-                      }
-                    }
-                  ]
-                }
-              }
+            "type": "text",
+            "text": `${row.name}`
+                
+              }))
             
             
              //end fulfillment
@@ -124,7 +56,7 @@ function handleLocationEvent(event) {
 
             // "type": "text",
             // "text": `${row.name}`
-))
+
 
           var msg = [];
 
