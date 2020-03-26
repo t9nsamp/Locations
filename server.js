@@ -45,13 +45,31 @@
           if (data) {
             //const pinData = data.results.map(row => ({
               const pinData = data.map(row => ({
-                                "type": "text", 
-                                "text": `${row.aqi.aqi}`,
+                "thumbnailImageUrl": row.aqi.icon,
+                "imageBackgroundColor": "#FFFFFF",
+                "title": `PM 2.5: ${row.aqi.aqi}`,
+                "text": `${row.nameTH}, ${row.areaTH}`,
+                "actions": [
+                  {
+                    "type": "uri",
+                    "label": "ข้อมูลย้อนหลัง",
+                    "uri": row.historyUrl
+                  }
+                ]
               }))
-              
-
+          
+              var msg = {
+                "type": "template",
+                "altText": "ข้อมูลสถานที่",
+                "template": {
+                  "type": "carousel",
+                  "columns": pinData[0],
+                  "imageAspectRatio": "rectangle",
+                  "imageSize": "cover"
+                }
+              }
       
-              resolve(client.replyMessage(event.replyToken, pinData[0]))
+              resolve(client.replyMessage(event.replyToken, msg))
             } else {
               reject()
             }
