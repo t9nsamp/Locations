@@ -44,10 +44,10 @@ function handleLocationEvent(event) {
     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         if (data) {
           //const pinData = data.results.map(row => ({
-            const pinData = data.aqi.map(row => ({
+            const pinData = data.map(row => ({
               "thumbnailImageUrl": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
               "imageBackgroundColor": "#FFFFFF",
-              "title": `PM 2.5: ${row.aqi}`,
+              "title": `PM 2.5: ${row.aqi.aqi}`,
               "text": "ข้อมูลย้อนหลัง",
               "actions": [
                 {
