@@ -63,13 +63,13 @@
                 "altText": "ข้อมูลสถานที่",
                 "template": {
                   "type": "carousel",
-                  "columns": pinData[0],
+                  "columns": pinData,
                   "imageAspectRatio": "rectangle",
                   "imageSize": "cover"
                 }
               }
       
-              resolve(client.replyMessage(event.replyToken, msg))
+              resolve(client.replyMessage(event.replyToken, msg[0]))
             } else {
               reject()
             }
