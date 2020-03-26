@@ -47,7 +47,7 @@ function handleLocationEvent(event) {
         var msg = {
 
             "type": "text",
-            "text": pinData
+            "text": "test"
 
             }
 
