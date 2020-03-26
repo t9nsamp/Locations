@@ -117,11 +117,21 @@
                 }
               
             }))
+            var pat = {
+              "type": "template",
+              "altText": "ข้อมูลสถานที่",
+              "template": {
+                "type": "carousel",
+                "columns": msg,
+                "imageAspectRatio": "rectangle",
+                "imageSize": "cover"
+              }
+            }
             var msg = [];
   
-            msg.push(pinData[0],[1],[2])
+            msg.push(pinData[0],pinData[1],pinData[2])
     
-            resolve(client.replyMessage(event.replyToken, msg))
+            resolve(client.replyMessage(event.replyToken, pat))
           } else {
             reject()
           }
@@ -135,3 +145,5 @@
     app.listen(app.get('port'), function () {
       console.log('run at port', app.get('port'))
     })
+
+       
