@@ -43,7 +43,7 @@ function handleLocationEvent(event) {
         if (data) {
           const pinData = data.map(row => ({
             "type": "text",
-            "text": `${row.nameTH}`,
+            "text": row.nameTH,
            /* "thumbnailImageUrl": row.aqi.icon,
             "imageBackgroundColor": "#FFFFFF",
             "title": `PM 2.5: ${row.aqi.aqi}`,
