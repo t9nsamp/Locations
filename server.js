@@ -47,8 +47,8 @@
               const pinData = data.map(row => ({
                 "thumbnailImageUrl": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
                 "imageBackgroundColor": "#FFFFFF",
-                "title": `${row.aqi.aqi}`,
-                "text": `${row.aqi.aqi}`,
+                "title": `${row[0].aqi.aqi}`,
+                "text": `${row[0].aqi.aqi}`,
                 "actions": [
                   {
                     "type": "uri",
