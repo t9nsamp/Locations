@@ -47,15 +47,13 @@ function handleLocationEvent(event) {
           const pinData = data.results.map(row => ({
             "type": "text",
             "text": `${row.name}`
-        
           }))
 
 
-          var msg = pinData[0]
-          var msg1 = pinData[1]
+          var msg = pinData[0]+pinData[1]+pinData[2]
 
         
-          resolve(client.replyMessage(event.replyToken, msg,msg1))
+          resolve(client.replyMessage(event.replyToken, msg))
         } else {
           reject()
         }
