@@ -47,6 +47,7 @@ function handleLocationEvent(event) {
             "type": "text",
             "text": `${row.name}`
           }))
+          var msg = pinData[0]
   
           resolve(client.replyMessage(event.replyToken, msg))
         } else {
