@@ -50,7 +50,7 @@ function handleLocationEvent(event) {
           // var y = 0;
             //const pinData = data.results
           const pinData = data.results.map(row => ({
-            "thumbnailImageUrl": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
+            //"thumbnailImageUrl": row.aqi.icon,
             "imageBackgroundColor": "#FFFFFF",
             "title": `${row.name}`,
             "text": `${row.vicinity}`,
@@ -73,20 +73,18 @@ function handleLocationEvent(event) {
               "imageSize": "cover"
             }
           }
-       
+  
           resolve(client.replyMessage(event.replyToken, msg))
         } else {
           reject()
         }
       })
-
+    })
+   
+  }
+  
+  app.set('port', (process.env.PORT || 4000))
+  
+  app.listen(app.get('port'), function () {
+    console.log('run at port', app.get('port'))
   })
- 
-}
-
-
-app.set('port', (process.env.PORT || 4000))
-
-app.listen(app.get('port'), function () {
-  console.log('run at port', app.get('port'))
-})
