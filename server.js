@@ -44,7 +44,9 @@
       //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         if (data) {
           const pinData = data.results.map(row => ({
-
+            "type": "flex",
+            "altText": "Flex Message",
+            "contents": {
                 "type": "carousel",
                 "contents": [
                   {
@@ -118,7 +120,7 @@
                     }
                   }
                 ]
-              
+            }
             
           }))
         
