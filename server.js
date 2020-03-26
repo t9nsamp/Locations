@@ -13,9 +13,9 @@ const config = {
 
 const client = new line.Client(config);
 
-/*app.get('/', function (req, res) {
+app.get('/', function (req, res) {
 	res.send('03-pm2.5-bot')
-})*/
+})
 
 app.post('/webhook', line.middleware(config), (req, res) => {
   Promise
