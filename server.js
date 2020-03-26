@@ -39,19 +39,19 @@
 
       //apiUrl : https://maps.googleapis.com/maps/api/place/nearbysearch/json
 
-      restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
+      //restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
 
-      //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+      restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
           if (data) {
-            const pinData = data.results.map(row => ({
-              //const pinData = data.map(row => ({
+            //const pinData = data.results.map(row => ({
+              const pinData = data.map(row => ({
                                 "type": "text", 
-                                "text": `${row[0].name[0]}`,
+                                "text": `${row.aqi.aqi}`,
               }))
               
 
       
-              resolve(client.replyMessage(event.replyToken, pinData))
+              resolve(client.replyMessage(event.replyToken, pinData[0]))
             } else {
               reject()
             }
