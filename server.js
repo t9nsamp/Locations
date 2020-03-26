@@ -45,29 +45,11 @@ function handleLocationEvent(event) {
         if (data) {
           //const pinData = data.results.map(row => ({
             const pinData = data.map(row => ({
-              "thumbnailImageUrl": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
-              "imageBackgroundColor": "#FFFFFF",
-              "title": `PM 2.5: ${row.aqi.aqi}`,
-              "text": "ข้อมูลย้อนหลัง",
-              "actions": [
-                {
-                  "type": "uri",
-                  "label": "ข้อมูลย้อนหลัง",
-                  "uri": "https://www.uob.co.th/default/index.page"
-                }
-              ]
+                              "type": "text", 
+                              "text": `${row.aqi.aqi}`,
             }))
         
-            var msg = {
-              "type": "template",
-              "altText": "ข้อมูลสถานที่",
-              "template": {
-                "type": "carousel",
-                "columns": pinData,
-                "imageAspectRatio": "rectangle",
-                "imageSize": "cover"
-              }
-            }
+
     
             resolve(client.replyMessage(event.replyToken, msg))
           } else {
