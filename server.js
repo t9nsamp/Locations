@@ -51,7 +51,7 @@ function handleLocationEvent(event) {
               "type": "bubble",
               "hero": {
                 "type": "image",
-                "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/01_1_cafe.png",
+                "url": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
                 "size": "full",
                 "aspectRatio": "20:13",
                 "aspectMode": "cover",
@@ -117,28 +117,7 @@ function handleLocationEvent(event) {
                     "spacing": "sm",
                     "margin": "lg",
                     "contents": [
-                      {
-                        "type": "box",
-                        "layout": "baseline",
-                        "spacing": "sm",
-                        "contents": [
-                          {
-                            "type": "text",
-                            "text": "Place",
-                           
-                            "size": "sm",
-                            "color": "#AAAAAA"
-                          },
-                          {
-                            "type": "text",
-                            "text": "Miraina Tower, 4-1-6 Shinjuku, Tokyo",
-                            
-                            "size": "sm",
-                            "color": "#666666",
-                            "wrap": true
-                          }
-                        ]
-                      },
+
                       {
                         "type": "box",
                         "layout": "baseline",
@@ -175,8 +154,8 @@ function handleLocationEvent(event) {
                     "type": "button",
                     "action": {
                       "type": "uri",
-                      "label": "CALL",
-                      "uri": "https://linecorp.com"
+                      "label": "นำทาง",
+                      "uri": `https://www.google.com/maps?q=${row.geometry.location.lat},${row.geometry.locationlng}`
                     },
                     "height": "sm",
                     "style": "link"
