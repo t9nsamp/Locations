@@ -39,7 +39,7 @@ function handleLocationEvent(event) {
 
     //apiUrl : https://maps.googleapis.com/maps/api/place/nearbysearch/json
 
-    restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+    /*restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
       if (data) {
         var pinData = data;
 
@@ -55,44 +55,49 @@ function handleLocationEvent(event) {
       } else {
         reject()
       }
-    })
+    })*/
+
+    restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
+        if (data) {
+          const pinData = data.map(row => ({
+            "thumbnailImageUrl": row.aqi.icon,
+            "imageBackgroundColor": "#FFFFFF",
+            "title": `PM 2.5: ${row.aqi.aqi}`,
+            "text": `${row.aqi.param}, ${row.aqi.param}`,
+            "actions": [
+              {
+                "type": "uri",
+                "label": "ข้อมูลย้อนหลัง",
+                "uri": row.historyUrl
+              }
+            ]
+          }))
+      
+          var msg = {
+            "type": "template",
+            "altText": "ข้อมูลสถานที่",
+            "template": {
+              "type": "carousel",
+              "columns": pinData,
+              "imageAspectRatio": "rectangle",
+              "imageSize": "cover"
+            }
+          }
+  
+          resolve(client.replyMessage(event.replyToken, msg))
+        } else {
+          reject()
+        }
+      })
+
   })
  
 }
 
-//     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
-//       if (data) {
-//         const pinData = data.map(row => ({
-//           "thumbnailImageUrl": row.aqi.icon,
-//           "imageBackgroundColor": "#FFFFFF",
-//           "title": `PM 2.5: ${row.aqi.aqi}`,
-//           "text": `${row.aqi.param}, ${row.aqi.param}`,
-//           "actions": [
-//             {
-//               "type": "uri",
-//               "label": "ข้อมูลย้อนหลัง",
-//               "uri": row.historyUrl
-//             }
-//           ]
-//         }))
-    
-//         var msg = {
-//           "type": "template",
-//           "altText": "ข้อมูลสถานที่",
-//           "template": {
-//             "type": "carousel",
-//             "columns": pinData,
-//             "imageAspectRatio": "rectangle",
-//             "imageSize": "cover"
-//           }
-//         }
 
-//         resolve(client.replyMessage(event.replyToken, msg))
-//       } else {
-//         reject()
-//       }
-//     })
-//   })
+
+
+
  
 // }
 //     restClient.get(`${process.env.apiUrl}?location=${event.message.lat},${event.message.lng}&rankby=distance&name=UOB@&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU0`, (data, response) => {
