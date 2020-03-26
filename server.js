@@ -45,7 +45,7 @@
           if (data) {
             //const pinData = data.results.map(row => ({
               const pinData = data.map(row => ({
-                "thumbnailImageUrl": `${row.aqi.aqi}`,
+                "thumbnailImageUrl": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
                 "imageBackgroundColor": "#FFFFFF",
                 "title": `${row.aqi.aqi}`,
                 "text": `${row.aqi.aqi}`,
