@@ -53,7 +53,7 @@ function handleLocationEvent(event) {
                   "type": "bubble",
                   "hero": {
                     "type": "image",
-                    "url": `${row.icon}`,
+                    "url": `${row[1].icon}`,
                     "size": "full",
                     "aspectRatio": "20:13",
                     "aspectMode": "cover"
@@ -65,7 +65,7 @@ function handleLocationEvent(event) {
                     "contents": [
                       {
                         "type": "text",
-                        "text": `PM 2.5 : ${row.name}`,
+                        "text": `PM 2.5 : ${row[1].name}`,
                         "size": "xl",
                         "weight": "bold",
                         "wrap": true
@@ -101,7 +101,7 @@ function handleLocationEvent(event) {
               ]
             }
           }))
-          var msg = pinData();
+          var msg = pinData[0]
   
           resolve(client.replyMessage(event.replyToken, msg))
         } else {
@@ -117,6 +117,3 @@ function handleLocationEvent(event) {
   app.listen(app.get('port'), function () {
     console.log('run at port', app.get('port'))
   })
-
-          
-
