@@ -69,7 +69,7 @@
                 }
               }
       
-              resolve(client.replyMessage(event.replyToken, msg[0]))
+              resolve(client.replyMessage(event.replyToken, msg))
             } else {
               reject()
             }
