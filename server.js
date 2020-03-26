@@ -41,8 +41,8 @@ function handleLocationEvent(event) {
 
     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         if (data) {
-          const pinData = data.map(row => ({
-            "text": row.nameTH
+          //const pinData = data.map(row => ({
+          const pinData = data.nameTH
            /* "thumbnailImageUrl": row.aqi.icon,
             "imageBackgroundColor": "#FFFFFF",
             "title": `PM 2.5: ${row.aqi.aqi}`,
@@ -54,7 +54,7 @@ function handleLocationEvent(event) {
                 "uri": row.historyUrl
               }
             ]*/
-          }))
+          //}))
 
         /*
           var msg = {
@@ -71,7 +71,7 @@ function handleLocationEvent(event) {
           var msg = {
 
             "type": "text",
-            pinData
+            "text": pinData
 
             }
   
