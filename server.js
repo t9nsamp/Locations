@@ -50,7 +50,7 @@ function handleLocationEvent(event) {
           // var y = 0;
             //const pinData = data.results
           const pinData = data.results.map(row => ({
-            //"thumbnailImageUrl": row.aqi.icon,
+            "thumbnailImageUrl": row.icon,
             "imageBackgroundColor": "#FFFFFF",
             "title": `Bank : ${row.name}`,
             "text": `${row.vicinity}`,
