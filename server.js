@@ -43,7 +43,8 @@ function handleLocationEvent(event) {
 
     //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         if (data) {
-          /*const pinData = data.result[1].map(row => ({
+            const pinData = data.result[0].name 
+          /*const pinData = data.map(row => ({
             "type": "text",
             "text": `${row.name}`
         
@@ -52,7 +53,8 @@ function handleLocationEvent(event) {
 
           var msg = {
             "type": "text",
-            "text": `${data.result[0].name}`
+            //"text": `${data.result[0].name}`
+            "text": pinData
           }
 
         
