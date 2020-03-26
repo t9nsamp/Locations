@@ -155,7 +155,7 @@ function handleLocationEvent(event) {
                     "action": {
                       "type": "uri",
                       "label": "นำทาง",
-                      "uri": `https://www.google.com/maps?q=${row.geometry.location.lat},${row.geometry.location.lng}`
+                      "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
                     },
                     "height": "sm",
                     "style": "link"
