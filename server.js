@@ -55,7 +55,7 @@ function handleLocationEvent(event) {
                   "contents": [
                     {
                       "type": "text",
-                      "text": "ธนาคาร UOB " + `${row.name}`,
+                      "text": `${row.name}`,
                       "size": "sm",
                       "weight": "bold",
                       "color": "#AAAAAA"
@@ -85,7 +85,7 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": "ที่อยู่ " + `${row.name}`,
+                          "text": `${row.name}`,
                           "margin": "md",
                           "size": "xs",
                           "gravity": "top"
@@ -95,7 +95,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text": "เบอร์ติดต่อ " + `${row.name}`,
+                          "text": `${row.name}`,
                           "margin": "md",
                           "size": "xs",
                           "gravity": "center"
