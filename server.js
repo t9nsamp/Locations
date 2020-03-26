@@ -104,6 +104,15 @@ function handleLocationEvent(event) {
                             "label": "นำทาง",
                             "uri":  `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
                           },
+                          "style": "primary"
+                        },
+                        {
+                          "type": "button",
+                          "action": {
+                            "type": "uri",
+                            "label": "เว็บไซต์",
+                            "uri": "https://www.uob.co.th/default/index.page"
+                          }
                       
                         }
                       ]
