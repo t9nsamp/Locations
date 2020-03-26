@@ -42,7 +42,7 @@ function handleLocationEvent(event) {
     restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         if (data) {
           const pinData = data.map(row => ({
-            "text": `${row.nameTH}, ${row.areaTH}`,
+            "text": row.nameTH
            /* "thumbnailImageUrl": row.aqi.icon,
             "imageBackgroundColor": "#FFFFFF",
             "title": `PM 2.5: ${row.aqi.aqi}`,
