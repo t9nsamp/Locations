@@ -48,10 +48,10 @@ function handleLocationEvent(event) {
                               "type": "text", 
                               "text": `${row.aqi.aqi}`,
             }))
-        
+            
 
     
-            resolve(client.replyMessage(event.replyToken, msg))
+            resolve(client.replyMessage(event.replyToken, pinData))
           } else {
             reject()
           }
