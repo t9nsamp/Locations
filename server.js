@@ -45,7 +45,7 @@
               if (data) {
                 const pinData = data.results.map(row => ({
                   "type": "text",
-                  "text": `${row.name}`,
+                  "text": `${row[0].name[0]}`,
                   }))
                 // const pinData = data.results.map(row => ({
                 //   const pinData = data.map(row => ({
