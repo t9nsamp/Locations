@@ -43,90 +43,262 @@
 
           //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
               if (data) {
-                const pinData = data.results.map(row => ({
-                  "type": "text",
-                  "text": `${row[0].name[0]}`,
-                  }))
-                // const pinData = data.results.map(row => ({
-                //   const pinData = data.map(row => ({
-                //     "type": "flex",
-                //     "altText": "Flex Message",
-                //     "contents": {
-                //       "type": "carousel",
-                //       "contents": [
-                //         {
-                //           "type": "bubble",
-                //           "hero": {
-                //             "type": "image",
-                //             "url": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
-                //             "size": "full",
-                //             "aspectRatio": "20:13",
-                //             "aspectMode": "cover"
-                //           },
-                //           "body": {
-                //             "type": "box",
-                //             "layout": "vertical",
-                //             "spacing": "sm",
-                //             "contents": [
-                //               {
-                //                 "type": "text",
-                //                 "text": `${row.name}`,
-                //                 "size": "xl",
-                //                 "weight": "bold",
-                //                 "wrap": true
-                //               },
-                //               {
-                //                 "type": "box",
-                //                 "layout": "baseline",
-                //                 "contents": [
-                //                   {
-                //                     "type": "text",
-                //                     "text": `${row.vicinity}`,
-                //                     "size": "sm",
-                //                     "weight": "bold",
-                //                     "wrap": true
-                //                   }
-      
-                //                 ]
-                //               }
-                //             ]
-                //           },
-                //           "footer": {
-                //             "type": "box",
-                //             "layout": "vertical",
-                //             "spacing": "sm",
-                //             "contents": [
-                //               {
-                //                 "type": "button",
-                //                 "action": {
-                //                   "type": "uri",
-                //                   "label": "นำทาง",
-                //                   "uri":  `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
-                //                 },
-                //                 "style": "primary"
-                //               },
-                //               {
-                //                 "type": "button",
-                //                 "action": {
-                //                   "type": "uri",
-                //                   "label": "เว็บไซต์",
-                //                   "uri": "https://www.uob.co.th/default/index.page"
-                //                 }
-                            
-                //               }
-                //             ]
-                //           }
-                //         }
-                //       ]
-                //     }
-                  
-                // }))
-                
-                // var msg = [];
-      
-                // msg.push(pinData[0],pinData[1],pinData[2])
-        
-                resolve(client.replyMessage(event.replyToken, pinData[0]))
+                const locationfetch = data.json();
+                replylocation(event.replyToken, {
+                  "type": "flex",
+                  "altText": "Flex Message",
+                  "contents": {
+                    "type": "carousel",
+                    "contents": [
+                      {
+                        "type": "bubble",
+                        "hero": {
+                          "type": "image",
+                          "url": `${locationfetch[0].results.name}`,
+                          "size": "full",
+                          "aspectRatio": "20:13",
+                          "aspectMode": "cover"
+                        },
+                        "body": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `PM 2.5 : ${locationfetch[0].results.name}`,
+                              "size": "xl",
+                              "weight": "bold",
+                              "wrap": true
+                            },
+                            {
+                              "type": "box",
+                              "layout": "baseline",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": `จุดตรวจวัด : ${locationfetch[0].results.name} ${locationfetch[0].results.name}`,
+                                  "flex": 0,
+                                  "size": "sm",
+                                  "weight": "bold",
+                                  "wrap": true
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "footer": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `อัพเดตเมื่อ : ${locationfetch[0].results.name}`
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "bubble",
+                        "hero": {
+                          "type": "image",
+                          "url": `${locationfetch[1].results.name}`,
+                          "size": "full",
+                          "aspectRatio": "20:13",
+                          "aspectMode": "cover"
+                        },
+                        "body": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `PM 2.5 : ${locationfetch[1].results.name}`,
+                              "size": "xl",
+                              "weight": "bold",
+                              "wrap": true
+                            },
+                            {
+                              "type": "box",
+                              "layout": "baseline",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": `จุดตรวจวัด : ${locationfetch[1].results.name} ${locationfetch[1].results.name}`,
+                                  "flex": 0,
+                                  "size": "sm",
+                                  "weight": "bold",
+                                  "wrap": true
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "footer": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `อัพเดตเมื่อ : ${locationfetch[1].results.name}`
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "bubble",
+                        "hero": {
+                          "type": "image",
+                          "url": `${locationfetch[2].results.name}`,
+                          "size": "full",
+                          "aspectRatio": "20:13",
+                          "aspectMode": "cover"
+                        },
+                        "body": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `PM 2.5 : ${locationfetch[2].results.name}`,
+                              "size": "xl",
+                              "weight": "bold",
+                              "wrap": true
+                            },
+                            {
+                              "type": "box",
+                              "layout": "baseline",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": `จุดตรวจวัด : ${locationfetch[2].results.name} ${locationfetch[2].results.name}`,
+                                  "flex": 0,
+                                  "size": "sm",
+                                  "weight": "bold",
+                                  "wrap": true
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "footer": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `อัพเดตเมื่อ : ${locationfetch[2].results.name}`
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "bubble",
+                        "hero": {
+                          "type": "image",
+                          "url": `${locationfetch[3].results.name}`,
+                          "size": "full",
+                          "aspectRatio": "20:13",
+                          "aspectMode": "cover"
+                        },
+                        "body": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `PM 2.5 : ${locationfetch[3].results.name}`,
+                              "size": "xl",
+                              "weight": "bold",
+                              "wrap": true
+                            },
+                            {
+                              "type": "box",
+                              "layout": "baseline",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": `จุดตรวจวัด : ${locationfetch[3].results.name} ${locationfetch[3].results.name}`,
+                                  "flex": 0,
+                                  "size": "sm",
+                                  "weight": "bold",
+                                  "wrap": true
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "footer": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `อัพเดตเมื่อ : ${locationfetch[3].results.name}`
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "bubble",
+                        "hero": {
+                          "type": "image",
+                          "url": `${locationfetch[4].results.name}`,
+                          "size": "full",
+                          "aspectRatio": "20:13",
+                          "aspectMode": "cover"
+                        },
+                        "body": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `PM 2.5 : ${locationfetch[4].results.name}`,
+                              "size": "xl",
+                              "weight": "bold",
+                              "wrap": true
+                            },
+                            {
+                              "type": "box",
+                              "layout": "baseline",
+                              "contents": [
+                                {
+                                  "type": "text",
+                                  "text": `จุดตรวจวัด : ${locationfetch[4].results.name} ${locationfetch[4].results.name}`,
+                                  "flex": 0,
+                                  "size": "sm",
+                                  "weight": "bold",
+                                  "wrap": true
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "footer": {
+                          "type": "box",
+                          "layout": "vertical",
+                          "spacing": "sm",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": `อัพเดตเมื่อ : ${locationfetch[4].results.name}`
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                });
+              
               } else {
                 reject()
               }
