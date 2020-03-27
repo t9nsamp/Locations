@@ -33,7 +33,7 @@
       }
 
       function handleLocationEvent(event) {
-        return new Promise((resolve, reject) => {
+        // return new Promise((resolve, reject) => {
 
           //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=13.8575872,100.5617152&rankby=distance&keyword=pea&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU
 
@@ -43,7 +43,7 @@
 
           //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
               if (data) {
-                const pinData = data.results.map ({
+                const pinData = data.results.map(row => ({
                   //const pinData = data.map(row => ({
                     "type": "flex",
                     "altText": "Flex Message",
@@ -66,7 +66,7 @@
                             "contents": [
                               {
                                 "type": "text",
-                                "text": `${pinData[0].name}`,
+                                "text": `${row[1].name}`,
                                 "size": "xl",
                                 "weight": "bold",
                                 "wrap": true
@@ -77,7 +77,7 @@
                                 "contents": [
                                   {
                                     "type": "text",
-                                    "text": `${pinData[0].vicinity}`,
+                                    "text": `${row[1].vicinity}`,
                                     "size": "sm",
                                     "weight": "bold",
                                     "wrap": true
@@ -116,18 +116,19 @@
                       ]
                     }
                   
-                })
+                }))
                 
                 // var msg = [];
       
                 // msg.push(pinData[0],pinData[1],pinData[2])
         
-                resolve(client.replyMessage(event.replyToken,))
-              } else {
-                reject()
-              }
+                //resolve(client.replyMessage(event.replyToken, pinData[0]))
+              } 
+              // else {
+              //   reject()
+              // }
             })
-          })
+          // })
         
         }
         
