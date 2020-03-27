@@ -33,7 +33,7 @@
       }
 
       function handleLocationEvent(event) {
-        return new Promise((resolve, reject) => {
+        // return new Promise((resolve, reject) => {
 
           //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=13.8575872,100.5617152&rankby=distance&keyword=pea&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU
 
@@ -303,7 +303,7 @@
               //   reject()
               // }
             })
-          })
+          // })
         
         }
         
