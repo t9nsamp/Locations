@@ -46,7 +46,7 @@
                 const pinData = data.results.map(row => ({
                   "type": "text",
                   "text": `${row.name}`,
-                  })
+                  }))
                 // const pinData = data.results.map(row => ({
                 //   const pinData = data.map(row => ({
                 //     "type": "flex",
