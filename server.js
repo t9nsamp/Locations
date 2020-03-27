@@ -66,7 +66,7 @@
                             "contents": [
                               {
                                 "type": "text",
-                                "text": `${row.name}`,
+                                "text": `${row.name[0]}`,
                                 "size": "xl",
                                 "weight": "bold",
                                 "wrap": true
@@ -77,7 +77,7 @@
                                 "contents": [
                                   {
                                     "type": "text",
-                                    "text": `${row.vicinity}`,
+                                    "text": "text",
                                     "size": "sm",
                                     "weight": "bold",
                                     "wrap": true
@@ -97,7 +97,7 @@
                                 "action": {
                                   "type": "uri",
                                   "label": "นำทาง",
-                                  "uri":  `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+                                  "uri":  "https://www.uob.co.th/default/index.page"
                                 },
                                 "style": "primary"
                               },
@@ -118,11 +118,11 @@
                   
                 }))
                 
-                var msg = [];
+                // var msg = [];
       
-                msg.push(pinData[0],pinData[1],pinData[2])
+                // msg.push(pinData[0],pinData[1],pinData[2])
         
-                resolve(client.replyMessage(event.replyToken, msg))
+                resolve(client.replyMessage(event.replyToken, pinData))
               } else {
                 reject()
               }
