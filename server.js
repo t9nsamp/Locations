@@ -43,7 +43,7 @@
 
           //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
               if (data) {
-               ({
+                const pinData = data.results.map({
                   "type": "text",
                   "text": `${data.results.name}`,
                   })
@@ -126,7 +126,7 @@
       
                 // msg.push(pinData[0],pinData[1],pinData[2])
         
-                resolve(client.replyMessage(event.replyToken, data[0]))
+                resolve(client.replyMessage(event.replyToken, pinData[0]))
               } else {
                 reject()
               }
