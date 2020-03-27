@@ -45,7 +45,7 @@
               if (data) {
                ({
                   "type": "text",
-                  "text": `${data.results[0].name}`,
+                  "text": `${data.results.name}`,
                   })
                 // const pinData = data.results.map(row => ({
                 //   const pinData = data.map(row => ({
@@ -126,7 +126,7 @@
       
                 // msg.push(pinData[0],pinData[1],pinData[2])
         
-                resolve(client.replyMessage(event.replyToken, data))
+                resolve(client.replyMessage(event.replyToken, data[0]))
               } else {
                 reject()
               }
