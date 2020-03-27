@@ -77,7 +77,7 @@
                                 "contents": [
                                   {
                                     "type": "text",
-                                    "text": `${row.opening_hours.open_now}`,
+                                    "text": row.opening_hours.open_now,
                                     "size": "sm",
                                     "weight": "bold",
                                     "wrap": true
