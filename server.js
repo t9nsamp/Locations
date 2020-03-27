@@ -66,7 +66,7 @@
                             "contents": [
                               {
                                 "type": "text",
-                                "text": `${row.name[0]}`,
+                                "text": `${results[0].row.name}`,
                                 "size": "xl",
                                 "weight": "bold",
                                 "wrap": true
