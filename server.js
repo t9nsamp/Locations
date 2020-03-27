@@ -43,9 +43,9 @@
 
           //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
               if (data) {
-                const pinData = data.map(row => ({
+                const pinData = data.results.map(row => ({
                   "type": "text",
-                  "text": `${row.results.name}`,
+                  "text": `${row.name}`,
                   }))
                 // const pinData = data.results.map(row => ({
                 //   const pinData = data.map(row => ({
