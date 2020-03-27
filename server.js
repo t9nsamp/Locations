@@ -66,7 +66,7 @@
                             "contents": [
                               {
                                 "type": "text",
-                                "text": `${row.name}`,
+                                "text": `${row[0].name}`,
                                 "size": "xl",
                                 "weight": "bold",
                                 "wrap": true
@@ -77,7 +77,7 @@
                                 "contents": [
                                   {
                                     "type": "text",
-                                    "text": `${row.vicinity}`,
+                                    "text": `${row[0].vicinity}`,
                                     "size": "sm",
                                     "weight": "bold",
                                     "wrap": true
@@ -97,7 +97,7 @@
                                 "action": {
                                   "type": "uri",
                                   "label": "นำทาง",
-                                  "uri":  `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+                                  "uri":  "https://www.uob.co.th/default/index.page"
                                 },
                                 "style": "primary"
                               },
