@@ -43,8 +43,9 @@
 
           //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
               if (data) {
-                const pinData = data.results.map(row => ({
-                  //const pinData = data.map(row => ({
+                //const pinData = data.results.map(row => ({
+                  //const pinData = data.map(row => 
+                        ({
                     "type": "flex",
                     "altText": "Flex Message",
                     "contents": {
@@ -66,7 +67,7 @@
                             "contents": [
                               {
                                 "type": "text",
-                                "text": `${results[0].row.name}`,
+                                "text": `${results[0].name}`,
                                 "size": "xl",
                                 "weight": "bold",
                                 "wrap": true
@@ -116,13 +117,13 @@
                       ]
                     }
                   
-                }))
+                })
                 
                 // var msg = [];
       
                 // msg.push(pinData[0],pinData[1],pinData[2])
         
-                resolve(client.replyMessage(event.replyToken, pinData))
+                resolve(client.replyMessage(event.replyToken, data))
               } else {
                 reject()
               }
