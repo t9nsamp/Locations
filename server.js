@@ -43,80 +43,84 @@
 
           //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
               if (data) {
-                //const pinData = data.results.map(row => ({
-                  const pinData = data.map({
-                    "type": "flex",
-                    "altText": "Flex Message",
-                    "contents": {
-                      "type": "carousel",
-                      "contents": [
-                        {
-                          "type": "bubble",
-                          "hero": {
-                            "type": "image",
-                            "url": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
-                            "size": "full",
-                            "aspectRatio": "20:13",
-                            "aspectMode": "cover"
-                          },
-                          "body": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "spacing": "sm",
-                            "contents": [
-                              {
-                                "type": "text",
-                                "text": `${results[0].name}`,
-                                "size": "xl",
-                                "weight": "bold",
-                                "wrap": true
-                              },
-                              {
-                                "type": "box",
-                                "layout": "baseline",
-                                "contents": [
-                                  {
-                                    "type": "text",
-                                    "text": "text",
-                                    "size": "sm",
-                                    "weight": "bold",
-                                    "wrap": true
-                                  }
+                const pinData = data.map(row => ({
+                  "type": "text",
+                  "text": `${row[0].name}`,
+                  }))
+                // const pinData = data.results.map(row => ({
+                //   const pinData = data.map(row => ({
+                //     "type": "flex",
+                //     "altText": "Flex Message",
+                //     "contents": {
+                //       "type": "carousel",
+                //       "contents": [
+                //         {
+                //           "type": "bubble",
+                //           "hero": {
+                //             "type": "image",
+                //             "url": "https://f.ptcdn.info/289/063/000/ppdkjp4tguIvW8qTx4iU-o.jpg",
+                //             "size": "full",
+                //             "aspectRatio": "20:13",
+                //             "aspectMode": "cover"
+                //           },
+                //           "body": {
+                //             "type": "box",
+                //             "layout": "vertical",
+                //             "spacing": "sm",
+                //             "contents": [
+                //               {
+                //                 "type": "text",
+                //                 "text": `${row.name}`,
+                //                 "size": "xl",
+                //                 "weight": "bold",
+                //                 "wrap": true
+                //               },
+                //               {
+                //                 "type": "box",
+                //                 "layout": "baseline",
+                //                 "contents": [
+                //                   {
+                //                     "type": "text",
+                //                     "text": `${row.vicinity}`,
+                //                     "size": "sm",
+                //                     "weight": "bold",
+                //                     "wrap": true
+                //                   }
       
-                                ]
-                              }
-                            ]
-                          },
-                          "footer": {
-                            "type": "box",
-                            "layout": "vertical",
-                            "spacing": "sm",
-                            "contents": [
-                              {
-                                "type": "button",
-                                "action": {
-                                  "type": "uri",
-                                  "label": "นำทาง",
-                                  "uri":  "https://www.uob.co.th/default/index.page"
-                                },
-                                "style": "primary"
-                              },
-                              {
-                                "type": "button",
-                                "action": {
-                                  "type": "uri",
-                                  "label": "เว็บไซต์",
-                                  "uri": "https://www.uob.co.th/default/index.page"
-                                }
+                //                 ]
+                //               }
+                //             ]
+                //           },
+                //           "footer": {
+                //             "type": "box",
+                //             "layout": "vertical",
+                //             "spacing": "sm",
+                //             "contents": [
+                //               {
+                //                 "type": "button",
+                //                 "action": {
+                //                   "type": "uri",
+                //                   "label": "นำทาง",
+                //                   "uri":  `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+                //                 },
+                //                 "style": "primary"
+                //               },
+                //               {
+                //                 "type": "button",
+                //                 "action": {
+                //                   "type": "uri",
+                //                   "label": "เว็บไซต์",
+                //                   "uri": "https://www.uob.co.th/default/index.page"
+                //                 }
                             
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    }
+                //               }
+                //             ]
+                //           }
+                //         }
+                //       ]
+                //     }
                   
-                })
+                // }))
                 
                 // var msg = [];
       
