@@ -122,7 +122,7 @@
       
                 // msg.push(pinData[0],pinData[1],pinData[2])
         
-                resolve(client.replyMessage(event.replyToken, pinData))
+                resolve(client.replyMessage(event.replyToken, pinData[0]))
               } else {
                 reject()
               }
