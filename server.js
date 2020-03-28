@@ -99,7 +99,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text": `${row.geometry.location.lat}aa${row.geometry.location.lng}`,
+                          "text": calculate(),
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
@@ -170,7 +170,9 @@ function handleLocationEvent(event) {
     })
    
   }
- 
+ function calculate(){
+   return "dddddd";
+ }
   
   app.set('port', (process.env.PORT || 4000))
   
