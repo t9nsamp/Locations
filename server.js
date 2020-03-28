@@ -92,7 +92,7 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": "เวลา",
+                          "text": "ระยะทาง",
                           "color": "#aaaaaa",
                           "size": "sm",
                           "flex": 1
@@ -197,7 +197,7 @@ function handleLocationEvent(event) {
        if (unit=="K") { dist = dist * 1.609344 }
        if (unit=="N") { dist = dist * 0.8684 }
 
-       return parseFloat(dist).toFixed(2);
+       return parseFloat(dist).toFixed(1)+"KM";
 
     }
   
