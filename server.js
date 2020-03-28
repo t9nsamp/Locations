@@ -111,20 +111,21 @@ function handleLocationEvent(event) {
             },
             "footer": {
               "type": "box",
-        "layout": "vertical",
-        "spacing": "sm",
-        "contents": [
-          {
-            "type": "button",
-            "flex": 2,
-            "style": "primary",
-            "color": "#aaaaaa",
-            "action": {
-              "type": "uri",
-              "label": "นำทาง",
-              "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
-            }
-          },
+              "layout": "vertical",
+              "spacing": "sm",
+              "contents": [
+                {
+                  "type": "button",
+                  "style": "link",
+                  "height": "sm",
+                  "style": "primary",
+                  "color": "#aaaaaa",
+                  "action": {
+                    "type": "uri",
+                    "label": "นำทาง",
+                    "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+                  }
+                },
                 {
                   "type": "button",
                   "style": "link",
