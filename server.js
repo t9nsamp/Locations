@@ -53,7 +53,7 @@ function handleLocationEvent(event) {
                   "type": "text",
                   "text": `${row.name}`,
                   "weight": "bold",
-                  "size": "md"
+                  "size": "xl"
                 },
                 {
                   "type": "box",
@@ -118,8 +118,6 @@ function handleLocationEvent(event) {
                   "type": "button",
                   "style": "link",
                   "height": "sm",
-                  "style": "primary",
-                  "color": "#aaaaaa",
                   "action": {
                     "type": "uri",
                     "label": "นำทาง",
