@@ -53,7 +53,7 @@ function handleLocationEvent(event) {
                   "type": "text",
                   "text": `${row.name}`,
                   "weight": "bold",
-                  "size": "xl"
+                  "size": "lg"
                 },
                 {
                   "type": "box",
@@ -90,13 +90,13 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": "Time",
+                          "text": "เวลา",
                           "color": "#aaaaaa",
                           "size": "sm",
                           "flex": 1
                         },
                         {
-                          "type": "เวลา",
+                          "type": "text",
                           "text": "ปิดชั่วคราว",
                           "wrap": true,
                           "color": "#666666",
