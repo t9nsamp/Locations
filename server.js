@@ -119,12 +119,14 @@ function handleLocationEvent(event) {
                   "type": "button",
                   "flex": 2,
                   "style": "primary",
-                  "color": "#aaaaaa",
+                  "color": "#012971",
                   "action": {
                     "type": "uri",
                     "label": "Add to Cart",
                     "uri": "https://linecorp.com"
-                  }
+                  },
+                  "height": "sm",
+                  "color": "#012971"
                 },
                 {
                   "type": "button",
@@ -132,7 +134,8 @@ function handleLocationEvent(event) {
                     "type": "uri",
                     "label": "Add to wish list",
                     "uri": "https://linecorp.com"
-                  }
+                  },
+                  "height": "sm",
                 },
                 {
                   "type": "spacer",
