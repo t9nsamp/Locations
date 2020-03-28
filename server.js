@@ -120,7 +120,7 @@ function handleLocationEvent(event) {
                   "height": "sm",
                   "action": {
                     "type": "uri",
-                    "label": "CALL",
+                    "label": "นำทาง",
                     "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
                   }
                 },
@@ -131,7 +131,7 @@ function handleLocationEvent(event) {
                   "action": {
                     "type": "uri",
                     "label": "WEBSITE",
-                    "uri": "https://linecorp.com"
+                    "uri": "https://www.uob.co.th/personal/location/locations-line.page"
                   }
                 },
                 {
