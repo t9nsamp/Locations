@@ -110,14 +110,7 @@ function handleLocationEvent(event) {
                     showGeocodedAddressOnMap(true)
                   );
                   outputDiv.innerHTML +=
-                    originList[i] +
-                    " to " +
-                    destinationList[j] +
-                    ": " +
-                    results[j].distance.text +
-                    " in " +
-                    results[j].duration.text +
-                    "<br>";
+                  results[j].distance.text;
                 }
               }
             }
@@ -179,7 +172,7 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": markersArray,
+                          "text": results[j].distance.text,
                           "color": "#aaaaaa",
                           "size": "sm",
                           "flex": 1
