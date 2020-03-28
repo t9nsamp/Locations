@@ -99,7 +99,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text":  distance1,
+                          "text":  initMap(distance1),
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
