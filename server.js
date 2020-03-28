@@ -92,14 +92,14 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": `${event.message.latitude}`,
+                          "text": "เวลา",
                           "color": "#aaaaaa",
                           "size": "sm",
                           "flex": 1
                         },
                         {
                           "type": "text",
-                          "text": "ปิดชั่วคราว",
+                          "text": `${row.geometry.location.lat}aa${row.geometry.location.lng}`,
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
