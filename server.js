@@ -122,7 +122,7 @@ function handleLocationEvent(event) {
                   "color": "#012971",
                   "action": {
                     "type": "uri",
-                    "label": "",
+                    "label": "นำทาง",
                     "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
                   },
                   "height": "sm",
@@ -136,7 +136,7 @@ function handleLocationEvent(event) {
                     "uri": "https://www.uob.co.th/personal/location/locations-line.page"
                   },
                   "height": "sm",
-                  "color": "#012971"
+                  
                 },
                 {
                   "type": "spacer",
