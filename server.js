@@ -99,7 +99,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text": calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry.location.lat}`,`${row.geometry.location.lng}`,"N"),
+                          "text": calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry.location.lat}`,`${row.geometry.location.lng}`),
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
@@ -171,7 +171,7 @@ function handleLocationEvent(event) {
    
   }
 
-  function calculate(lat1, lon1, lat2, lon2, unit) {
+  function calculate(lat1, lon1, lat2, lon2) {
     if ((lat1 == lat2) && (lon1 == lon2)) {
       return 0;
     }
@@ -196,8 +196,8 @@ function handleLocationEvent(event) {
   
   }
 
-  function test(text){
-    return text
+  function test(text1,text2,text3,text4){
+    return text1+"--"+text2+"--"+text3+"--"+text4;
   }
 
   app.set('port', (process.env.PORT || 4000))
