@@ -44,6 +44,7 @@ function handleLocationEvent(event) {
       //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
         
       if (data) {
+        var dist_;
         var bounds = new google.maps.LatLngBounds();
         var markersArray = [];
         var origin1 = { lat: event.message.latitude, lng: event.message.longitude };       
@@ -111,6 +112,7 @@ function handleLocationEvent(event) {
                   );
                   outputDiv.innerHTML +=
                   results[j].distance.text;
+                   dist_ = results[j].distance.text;
                 }
               }
             }
@@ -172,7 +174,7 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": results[j].distance.text,
+                          "text": dist_,
                           "color": "#aaaaaa",
                           "size": "sm",
                           "flex": 1
