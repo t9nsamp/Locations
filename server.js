@@ -53,7 +53,8 @@ function handleLocationEvent(event) {
                   "type": "text",
                   "text": `${row.name}`,
                   "weight": "bold",
-                  "size": "lg"
+                  "size": "lg",
+                  "wrap": true
                 },
                 {
                   "type": "box",
@@ -116,22 +117,21 @@ function handleLocationEvent(event) {
               "contents": [
                 {
                   "type": "button",
-                  "style": "link",
-                  "height": "sm",
+                  "flex": 2,
+                  "style": "primary",
+                  "color": "#aaaaaa",
                   "action": {
                     "type": "uri",
-                    "label": "นำทาง",
-                    "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+                    "label": "Add to Cart",
+                    "uri": "https://linecorp.com"
                   }
                 },
                 {
                   "type": "button",
-                  "style": "link",
-                  "height": "sm",
                   "action": {
                     "type": "uri",
-                    "label": "WEBSITE",
-                    "uri": "https://www.uob.co.th/personal/location/locations-line.page"
+                    "label": "Add to wish list",
+                    "uri": "https://linecorp.com"
                   }
                 },
                 {
