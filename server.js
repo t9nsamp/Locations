@@ -297,7 +297,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text": calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry.location.lat}`,`${row.geometry.location.lng}`),
+                          "text":"55555555",
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
