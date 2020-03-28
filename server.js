@@ -99,7 +99,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text": calculate($(event.message.latitude),$(event.message.longitude),$(row.geometry.location.lat),$(row.geometry.location.lng)),
+                          "text": "calculate($(event.message.latitude),$(event.message.longitude),$(row.geometry.location.lat),$(row.geometry.location.lng))",
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
@@ -170,6 +170,7 @@ function handleLocationEvent(event) {
     })
    
   }
+
   function calculate(lat1, lon1, lat2, lon2, unit) {
     if ((lat1 == lat2) && (lon1 == lon2)) {
       return 0;
@@ -190,7 +191,7 @@ function handleLocationEvent(event) {
       if (unit=="N") { dist = dist * 0.8684 }
 
       return dist;
-      
+
     }
   }
   
