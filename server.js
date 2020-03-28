@@ -389,11 +389,13 @@ return $Value * pi() / 180;
 
 
   function calculate(lat1, lon1, lat2, lon2) {
+    return "sdsd";
     lat1 = parseFloat(lat1);
     lat2 = parseFloat(lat2);
 
     lon1 = parseFloat(lon1);
     lon2 = parseFloat(lon2);
+
     if ((lat1 == lat2) && (lon1 == lon2)) {
       return 0;
     }
