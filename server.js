@@ -197,7 +197,7 @@ function handleLocationEvent(event) {
        if (unit=="K") { dist = dist * 1.609344 }
        if (unit=="N") { dist = dist * 0.8684 }
 
-      return dist+"SS";
+       return parseFloat(dist).toFixed(2);
 
     }
   
