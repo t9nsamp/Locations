@@ -92,7 +92,7 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": `${x}`,
+                          "text": `${event.message.latitude}`,
                           "color": "#aaaaaa",
                           "size": "sm",
                           "flex": 1
@@ -170,6 +170,7 @@ function handleLocationEvent(event) {
     })
    
   }
+ 
   
   app.set('port', (process.env.PORT || 4000))
   
