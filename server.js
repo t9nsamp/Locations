@@ -190,7 +190,7 @@ function handleLocationEvent(event) {
       if (unit=="K") { dist = dist * 1.609344 }
       if (unit=="N") { dist = dist * 0.8684 }
 
-      return "test";
+      return dist;
 
     }
   
