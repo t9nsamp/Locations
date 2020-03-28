@@ -41,9 +41,9 @@ function handleLocationEvent(event) {
     //apiUrl : https://maps.googleapis.com/maps/api/place/nearbysearch/json
 
     restClient.get(`${process.env.apiUrl}?location=${event.message.latitude},${event.message.longitude}&rankby=distance&keyword=UOB&key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU`, (data, response) => {
-      //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {
-        
+      //restClient.get(`${process.env.apiUrl}?lat=${event.message.latitude}&long=${event.message.longitude}`, (data, response) => {    
       if (data) {
+          var x = "77777";
           const pinData = data.results.map(row => ({
             "type": "bubble",
             "body": {
@@ -92,7 +92,7 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": "เวล่า",
+                          "text": `${this.x}`,
                           "color": "#aaaaaa",
                           "size": "sm",
                           "flex": 1
