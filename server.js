@@ -99,7 +99,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text":  initMap,
+                          "text":  distance1,
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
@@ -172,6 +172,10 @@ function handleLocationEvent(event) {
   }
 
   function initMap() {
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAagc52SCi1ns7CggOovTSBMTd8YTXRlRU&callback=initMap"
+    var distance1 = results[j].distance.text;
     var bounds = new google.maps.LatLngBounds();
     var markersArray = [];
     var origin1 = { lat: event.message.latitude, lng: event.message.longitude };       
