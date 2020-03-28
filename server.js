@@ -388,7 +388,7 @@ return $Value * pi() / 180;
 }
 
 
-  function calculate(lat1, lon1, lat2, lon2) {
+  function calculate(lat1,lon1,lat2,lon2) {
     return "sdsd";
     lat1 = parseFloat(lat1);
     lat2 = parseFloat(lat2);
@@ -420,17 +420,7 @@ return $Value * pi() / 180;
   
   }
 
-  function test(text1,text2,text3,text4){
-    return text1+"--"+text2+"--"+text3+"--"+text4;
-  }
-
-  app.set('port', (process.env.PORT || 4000))
-  
-  app.listen(app.get('port'), function () {
-    console.log('run at port', app.get('port'))
-  })
-       
-
+      
 
   function test(text1,text2,text3,text4){
     return text1+"--"+text2+"--"+text3+"--"+text4;
