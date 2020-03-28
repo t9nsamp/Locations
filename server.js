@@ -92,7 +92,7 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": `${this.x}`,
+                          "text": `${x}`,
                           "color": "#aaaaaa",
                           "size": "sm",
                           "flex": 1
