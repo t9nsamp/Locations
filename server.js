@@ -99,7 +99,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text": test("11111"),
+                          "text": test(`${event.message.latitude}`),
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
