@@ -99,7 +99,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text":  calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry.location.lat}`,`${row.geometry.location.lng}`),
+                          "text":  calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry.location.lat}`,`${row.geometry.location.lng}`,"K"),
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
@@ -171,7 +171,7 @@ function handleLocationEvent(event) {
    
   }
 
-  function calculate(lat1,lon1,lat2,lon2) {
+  function calculate(lat1,lon1,lat2,lon2,unit) {
    // return "sdsd";
     lat1 = parseFloat(lat1);
     lat2 = parseFloat(lat2);
@@ -194,8 +194,8 @@ function handleLocationEvent(event) {
       dist = Math.acos(dist);
       dist = dist * 180/Math.PI;
       dist = dist * 60 * 1.1515;
-      // if (unit=="K") { dist = dist * 1.609344 }
-      // if (unit=="N") { dist = dist * 0.8684 }
+       if (unit=="K") { dist = dist * 1.609344 }
+       if (unit=="N") { dist = dist * 0.8684 }
 
       return dist+"SS";
 
