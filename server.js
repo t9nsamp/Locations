@@ -99,7 +99,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text":  calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry.location.lat}`,`${row.geometry.location.lng}`,"K"),
+                          "text":  initMap,
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
@@ -171,37 +171,119 @@ function handleLocationEvent(event) {
    
   }
 
-  function calculate(lat1,lon1,lat2,lon2,unit) {
-   // return "sdsd";
-    lat1 = parseFloat(lat1);
-    lat2 = parseFloat(lat2);
+  function initMap() {
+    var bounds = new google.maps.LatLngBounds();
+    var markersArray = [];
+    var origin1 = { lat: event.message.latitude, lng: event.message.longitude };       
+    var destinationB = { lat: row.geometry.location.lat, lng: row.geometry.location.lng  };
+    var destinationIcon =
+      "https://chart.googleapis.com/chart?" +
+      "chst=d_map_pin_letter&chld=D|FF0000|000000";
+    var originIcon =
+      "https://chart.googleapis.com/chart?" +
+      "chst=d_map_pin_letter&chld=O|FFFF00|000000";
+    var map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: 13.736717, lng: 	100.523186 },
+      zoom: 10
+    });
+    var geocoder = new google.maps.Geocoder();
 
-    lon1 = parseFloat(lon1);
-    lon2 = parseFloat(lon2);
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix(
+      {
+        origins: [origin1],
+        destinations: [destinationB],
+        travelMode: "DRIVING",
+        unitSystem: google.maps.UnitSystem.METRIC,
+        avoidHighways: false, 
+        avoidTolls: false
+      },
+      function(response, status) {
+        if (status !== "OK") {
+          alert("Error was : " + status);
+        } else {
+          var originList = response.originAddresses;
+          var destinationList = response.destinationAddresses;
+          var outputDiv = document.getElementById("output");
+          outputDiv.innerHTML = "";
+          deleteMarkers(markersArray);
 
-    if ((lat1 == lat2) && (lon1 == lon2)) {
-      return 0;
-    }
-    else {
-      var radlat1 = Math.PI * lat1/180;
-      var radlat2 = Math.PI * lat2/180;
-      var theta = lon1-lon2;
-      var radtheta = Math.PI * theta/180;
-      var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-      if (dist > 1) {
-        dist = 1;
+          var showGeocodedAddressOnMap = function(asDestination) {
+            var icon = asDestination ? destinationIcon : originIcon;
+            return function(results, status) {
+              if (status === "OK") {
+                map.fitBounds(bounds.extend(results[0].geometry.location));
+                markersArray.push(
+                  new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location,
+                    icon: icon
+                  })
+                );
+              } else {
+                alert("Geocode was not successful due to: " + status);
+              }
+            };
+          };
+
+          for (var i = 0; i < originList.length; i++) {
+            var results = response.rows[i].elements;
+            geocoder.geocode(
+              { address: originList[i] },
+              showGeocodedAddressOnMap(false)
+            );
+            for (var j = 0; j < results.length; j++) {
+              geocoder.geocode(
+                { address: destinationList[j] },
+                showGeocodedAddressOnMap(true)
+              );
+              outputDiv.innerHTML +=
+              results[j].distance.text;
+            }
+          }
+        }
       }
-      dist = Math.acos(dist);
-      dist = dist * 180/Math.PI;
-      dist = dist * 60 * 1.1515;
-       if (unit=="K") { dist = dist * 1.609344 }
-       if (unit=="N") { dist = dist * 0.8684 }
-
-      return dist+"SS";
-
-    }
-  
+    );
   }
+
+  function deleteMarkers(markersArray) {
+    for (var i = 0; i < markersArray.length; i++) {
+      markersArray[i].setMap(null);
+    }
+    markersArray = [];
+  }
+
+  // function calculate(lat1,lon1,lat2,lon2,unit) {
+  //  // return "sdsd";
+  //   lat1 = parseFloat(lat1);
+  //   lat2 = parseFloat(lat2);
+
+  //   lon1 = parseFloat(lon1);
+  //   lon2 = parseFloat(lon2);
+
+  //   if ((lat1 == lat2) && (lon1 == lon2)) {
+  //     return 0;
+  //   }
+  //   else {
+  //     var radlat1 = Math.PI * lat1/180;
+  //     var radlat2 = Math.PI * lat2/180;
+  //     var theta = lon1-lon2;
+  //     var radtheta = Math.PI * theta/180;
+  //     var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  //     if (dist > 1) {
+  //       dist = 1;
+  //     }
+  //     dist = Math.acos(dist);
+  //     dist = dist * 180/Math.PI;
+  //     dist = dist * 60 * 1.1515;
+  //      if (unit=="K") { dist = dist * 1.609344 }
+  //      if (unit=="N") { dist = dist * 0.8684 }
+
+  //     return dist+"SS";
+
+  //   }
+  
+  // }
   app.set('port', (process.env.PORT || 4000))
   
   app.listen(app.get('port'), function () {
