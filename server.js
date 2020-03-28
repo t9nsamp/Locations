@@ -53,7 +53,7 @@ function handleLocationEvent(event) {
                   "type": "text",
                   "text": `${row.name}`,
                   "weight": "bold",
-                  "size": "xl"
+                  "size": "md"
                 },
                 {
                   "type": "box",
@@ -68,7 +68,7 @@ function handleLocationEvent(event) {
                       "contents": [
                         {
                           "type": "text",
-                          "text": "Place",
+                          "text": "ที่อยู่",
                           "color": "#aaaaaa",
                           "size": "sm",
                           "flex": 1
@@ -96,8 +96,8 @@ function handleLocationEvent(event) {
                           "flex": 1
                         },
                         {
-                          "type": "text",
-                          "text": "10:00 - 23:00",
+                          "type": "เวลา",
+                          "text": "ปิดชั่วคราว",
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
@@ -111,19 +111,20 @@ function handleLocationEvent(event) {
             },
             "footer": {
               "type": "box",
-              "layout": "vertical",
-              "spacing": "sm",
-              "contents": [
-                {
-                  "type": "button",
-                  "style": "link",
-                  "height": "sm",
-                  "action": {
-                    "type": "uri",
-                    "label": "นำทาง",
-                    "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
-                  }
-                },
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "flex": 2,
+            "style": "primary",
+            "color": "#aaaaaa",
+            "action": {
+              "type": "uri",
+              "label": "นำทาง",
+              "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+            }
+          },
                 {
                   "type": "button",
                   "style": "link",
