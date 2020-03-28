@@ -378,7 +378,7 @@ function handleLocationEvent(event) {
     $a = sin($dLat/2) * sin($dLat/2) +sin($dLon/2) * sin($dLon/2) * cos($lat1) * cos($lat2); 
     $c = 2 * atan2(sqrt($a), sqrt(1-$a)); 
     $d = $R * $c;
-    return $d;
+    return $d+"AA";
 }
 
 // Converts numeric degrees to radians
