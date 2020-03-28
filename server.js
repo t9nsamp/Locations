@@ -122,8 +122,8 @@ function handleLocationEvent(event) {
                   "color": "#012971",
                   "action": {
                     "type": "uri",
-                    "label": "Add to Cart",
-                    "uri": "https://linecorp.com"
+                    "label": "",
+                    "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
                   },
                   "height": "sm",
                   "color": "#012971"
@@ -132,10 +132,11 @@ function handleLocationEvent(event) {
                   "type": "button",
                   "action": {
                     "type": "uri",
-                    "label": "Add to wish list",
-                    "uri": "https://linecorp.com"
+                    "label": "เว็บไซต์",
+                    "uri": "https://www.uob.co.th/personal/location/locations-line.page"
                   },
                   "height": "sm",
+                  "color": "#012971"
                 },
                 {
                   "type": "spacer",
