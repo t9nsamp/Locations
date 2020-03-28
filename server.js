@@ -99,7 +99,7 @@ function handleLocationEvent(event) {
                         },
                         {
                           "type": "text",
-                          "text": "calculate($(event.message.latitude),$(event.message.longitude),$(row.geometry.location.lat),$(row.geometry.location.lng))",
+                          "text": calculate($(event.message.latitude),$(event.message.longitude),$(row.geometry.location.lat),$(row.geometry.location.lng)),
                           "wrap": true,
                           "color": "#666666",
                           "size": "sm",
@@ -190,9 +190,10 @@ function handleLocationEvent(event) {
       if (unit=="K") { dist = dist * 1.609344 }
       if (unit=="N") { dist = dist * 0.8684 }
 
-      return dist;
+      return "test";
 
     }
+  
   }
   
   app.set('port', (process.env.PORT || 4000))
