@@ -77,7 +77,7 @@ function handleLocationEvent(event) {
                 },
                 {
                   "type": "text",
-                  "text": `${row.vicinity}`,
+                  "text": `${row[1].vicinity}`,
                   "flex": 0,
                   "margin": "sm",
                   "weight": "bold"
@@ -254,7 +254,7 @@ function handleLocationEvent(event) {
 
           var CC = [];
 
-          CC.push(pinData[0],pinData[1],pinData[2])
+          CC.push(pinData[0])
 
           var msg = {
             "type": "flex",
