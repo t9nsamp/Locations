@@ -46,215 +46,112 @@ function handleLocationEvent(event) {
           var x = "77777"
           const pinData = data.results.map(row => ({
             "type": "bubble",
-    "body": {
-      "type": "box",
-      "layout": "vertical",
-      "spacing": "md",
-      "action": {
-        "type": "uri",
-        "label": "Action",
-        "uri": "https://linecorp.com"
-      },
-      "contents": [
-        {
-          "type": "text",
-          "text": `${row.name[1]}`,
-          "size": "xl",
-          "weight": "bold"
-        },
-        {
-          "type": "box",
-          "layout": "vertical",
-          "spacing": "sm",
-          "contents": [
-            {
+            "body": {
               "type": "box",
-              "layout": "baseline",
+              "layout": "vertical",
               "contents": [
                 {
-                  "type": "icon",
-                  "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_regular_32.png"
+                  "type": "text",
+                  "text": `${row.name}`,
+                  "weight": "bold",
+                  "size": "lg",
+                  "wrap": true
                 },
                 {
-                  "type": "text",
-                  "text": `${row.vicinity[1]}`,
-                  "flex": 0,
-                  "margin": "sm",
-                  "weight": "bold"
-                },
-                {
-                  "type": "text",
-                  "text": "400kcl",
-                  "size": "sm",
-                  "align": "end",
-                  "color": "#AAAAAA"
+                  "type": "box",
+                  "layout": "vertical",
+                  "margin": "lg",
+                  "spacing": "sm",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "spacing": "sm",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "ที่อยู่",
+                          "color": "#aaaaaa",
+                          "size": "sm",
+                          "flex": 1
+                        },
+                        {
+                          "type": "text",
+                          "text": `${row.vicinity}`,
+                          "wrap": true,
+                          "color": "#666666",
+                          "size": "sm",
+                          "flex": 5
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "baseline",
+                      "spacing": "sm",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "ระยะทาง",
+                          "color": "#aaaaaa",
+                          "size": "sm",
+                          "flex": 1
+                        },
+                        {
+                          "type": "text",
+                          "text":  calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry.location.lat}`,`${row.geometry.location.lng}`),
+                          "wrap": true,
+                          "color": "#666666",
+                          "size": "sm",
+                          "flex": 5
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
-            {
+            "footer": {
               "type": "box",
-              "layout": "baseline",
+              "layout": "vertical",
+              "spacing": "sm",
               "contents": [
                 {
-                  "type": "icon",
-                  "url": "https://scdn.line-apps.com/n/channel_devcenter/img/fx/restaurant_large_32.png"
+                  "type": "button",
+                  "flex": 2,
+                  "style": "primary",
+                  "color": "#012971",
+                  "action": {
+                    "type": "uri",
+                    "label": "นำทาง",
+                    "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+                  },
+                  "height": "sm",
+                  "color": "#012971"
                 },
                 {
-                  "type": "text",
-                  "text":  calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry[1].location.lat}`,`${row.geometry[1].location.lng}`),
-                  "flex": 0,
-                  "margin": "sm",
-                  "weight": "bold"
-                },
-                {
-                  "type": "text",
-                  "text": "550kcl",
-                  "size": "sm",
-                  "align": "end",
-                  "color": "#AAAAAA"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "text": "Sauce, Onions, Pickles, Lettuce & Cheese",
-          "size": "xxs",
-          "color": "#AAAAAA",
-          "wrap": true
-        }
-      ]
-    },
-    "footer": {
-      "type": "box",
-      "layout": "vertical",
-      "contents": [
-        {
-          "type": "spacer",
-          "size": "xxl"
-        },
-        {
-          "type": "button",
-          "action": {
-            "type": "uri",
-            "label": "นำทาง",
-            "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry[1].location.lat},${row.geometry[1].location.lng}`
-          },
-          "color": "#905C44",
-          "style": "primary"
-        }
-      ]
-    }
-  
-
-            // "type": "bubble",
-            // "body": {
-            //   "type": "box",
-            //   "layout": "vertical",
-            //   "contents": [
-            //     {
-            //       "type": "text",
-            //       "text": `${row.name}`,
-            //       "weight": "bold",
-            //       "size": "lg",
-            //       "wrap": true
-            //     },
-            //     {
-            //       "type": "box",
-            //       "layout": "vertical",
-            //       "margin": "lg",
-            //       "spacing": "sm",
-            //       "contents": [
-            //         {
-            //           "type": "box",
-            //           "layout": "baseline",
-            //           "spacing": "sm",
-            //           "contents": [
-            //             {
-            //               "type": "text",
-            //               "text": "ที่อยู่",
-            //               "color": "#aaaaaa",
-            //               "size": "sm",
-            //               "flex": 1
-            //             },
-            //             {
-            //               "type": "text",
-            //               "text": `${row.vicinity}`,
-            //               "wrap": true,
-            //               "color": "#666666",
-            //               "size": "sm",
-            //               "flex": 5
-            //             }
-            //           ]
-            //         },
-            //         {
-            //           "type": "box",
-            //           "layout": "baseline",
-            //           "spacing": "sm",
-            //           "contents": [
-            //             {
-            //               "type": "text",
-            //               "text": "ระยะทาง",
-            //               "color": "#aaaaaa",
-            //               "size": "sm",
-            //               "flex": 1
-            //             },
-            //             {
-            //               "type": "text",
-            //               "text":  calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry.location.lat}`,`${row.geometry.location.lng}`),
-            //               "wrap": true,
-            //               "color": "#666666",
-            //               "size": "sm",
-            //               "flex": 5
-            //             }
-            //           ]
-            //         }
-            //       ]
-            //     }
-            //   ]
-            // },
-            // "footer": {
-            //   "type": "box",
-            //   "layout": "vertical",
-            //   "spacing": "sm",
-            //   "contents": [
-            //     {
-            //       "type": "button",
-            //       "flex": 2,
-            //       "style": "primary",
-            //       "color": "#012971",
-            //       "action": {
-            //         "type": "uri",
-            //         "label": "นำทาง",
-            //         "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
-            //       },
-            //       "height": "sm",
-            //       "color": "#012971"
-            //     },
-            //     {
-            //       "type": "button",
-            //       "action": {
-            //         "type": "uri",
-            //         "label": "เว็บไซต์",
-            //         "uri": "https://www.uob.co.th/personal/location/locations-line.page"
-            //       },
-            //       "height": "sm",
+                  "type": "button",
+                  "action": {
+                    "type": "uri",
+                    "label": "เว็บไซต์",
+                    "uri": "https://www.uob.co.th/personal/location/locations-line.page"
+                  },
+                  "height": "sm",
                   
-            //     },
-            //     {
-            //       "type": "spacer",
-            //       "size": "sm"
-            //     }
-            //   ],
-            //   "flex": 0
-            // }
+                },
+                {
+                  "type": "spacer",
+                  "size": "sm"
+                }
+              ],
+              "flex": 0
+            }
            
           }))
 
           var CC = [];
 
-          CC.push(pinData[0])
+          CC.push(pinData[1])
 
           var msg = {
             "type": "flex",
