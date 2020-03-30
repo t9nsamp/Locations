@@ -58,7 +58,7 @@ function handleLocationEvent(event) {
       "contents": [
         {
           "type": "text",
-          "text": `${row.name}`,
+          "text": `${row[1].name}`,
           "size": "xl",
           "weight": "bold"
         },
@@ -101,7 +101,7 @@ function handleLocationEvent(event) {
                 },
                 {
                   "type": "text",
-                  "text":  calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row.geometry.location.lat}`,`${row.geometry.location.lng}`),
+                  "text":  calculate(`${event.message.latitude}`,`${event.message.longitude}`,`${row[1].geometry.location.lat}`,`${row[1].geometry.location.lng}`),
                   "flex": 0,
                   "margin": "sm",
                   "weight": "bold"
@@ -139,7 +139,7 @@ function handleLocationEvent(event) {
           "action": {
             "type": "uri",
             "label": "นำทาง",
-            "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row.geometry.location.lat},${row.geometry.location.lng}`
+            "uri": `https://www.google.com/maps/dir/${event.message.latitude},${event.message.longitude}/${row[1].geometry.location.lat},${row[1].geometry.location.lng}`
           },
           "color": "#905C44",
           "style": "primary"
