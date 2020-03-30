@@ -157,7 +157,7 @@ function handleLocationEvent(event) {
             "type": "flex",
             "altText": "Flex Message",
             "contents": {
-                "type": "carousel",
+                "type": "bubble",
                 "contents": CC
           }
         }
